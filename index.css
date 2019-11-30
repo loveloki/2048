@@ -1,11 +1,28 @@
 ._2048 {
     display: grid;
+    width: 500px;
+    height: 500px;
     grid-template-rows: 100px 100px 100px 100px;
     grid-template-columns: 100px 100px 100px 100px;
-    gap: 5px;
+    gap: 20px;
+    justify-content: center;
+    align-content: center;
+    background: #bbada0;
+    border-radius: 5px;
 }
 
 .cell {
-    color: #fff;
-    background: #5bc49f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    justify-self: center;
+    align-self: center;
+    color: #776e65;
+    font-size: 55px;
+    font-weight: bold;
+    background: #EEE4DA;
+    border-radius: 3px;
 }
+
