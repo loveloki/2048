@@ -1,20 +1,14 @@
-var tiles = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-]
-var bestScore = 0
-var currentScore = 0
-var prevTile = undefined
-var nextTile = undefined
-
 var _2048 = {
-    chessboard: tiles,
-    bestScore: bestScore,
-    currentScore: currentScore,
-    prevTile: prevTile,
-    nextTile: nextTile,
+    chessboard: [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+    ],
+    bestScore: 0,
+    currentScore: 0,
+    prevTile: undefined,
+    nextTile: undefined,
     move: function move(direction) {
 
     },
