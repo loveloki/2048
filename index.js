@@ -1,3 +1,5 @@
+const cells = document.querySelectorAll('.cell')
+
 var _2048 = {
     chessboard: [
         [0, 0, 0, 0],
@@ -22,7 +24,20 @@ var _2048 = {
 
     },
     update: function update() {
+        //绘制chessboard
+        for (let i = 0; i < chessboard.length; i++) {
+            for (let j = 0; j < chessboard.length; j++) {
+                const tileLevel = chessboard[i][j]
+                const tileSpan = cells[i*4 + j].querySelector('span')
 
+                if (tileLevel != 0) {
+                    tileSpan.innerText = 2 ** tileLevel
+                    tileSpan.classList.add('tile-' + tileLevel)
+                }else{
+                    tileSpan.innerText = ''
+                }
+            }
+        }
     },
     newGame: function newGame() {
 
@@ -40,3 +55,4 @@ var _2048 = {
 
     },
 }
+
