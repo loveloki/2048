@@ -29,9 +29,9 @@ var _2048 = {
     },
     update: function update() {
         //绘制chessboard
-        for (let i = 0; i < chessboard.length; i++) {
-            for (let j = 0; j < chessboard.length; j++) {
-                const tileLevel = chessboard[i][j]
+        for (let i = 0; i < this.chessboard.length; i++) {
+            for (let j = 0; j < this.chessboard.length; j++) {
+                const tileLevel = this.chessboard[i][j]
                 const tileSpan = cells[i*4 + j].querySelector('span')
 
                 if (tileLevel != 0) {
@@ -45,8 +45,8 @@ var _2048 = {
     },
     newGame: function newGame() {
         //将html所有的className重置为初始值
-        for (let i = 0; i < chessboard.length; i++) {
-            for (let j = 0; j < chessboard.length; j++) {
+        for (let i = 0; i < this.chessboard.length; i++) {
+            for (let j = 0; j < this.chessboard.length; j++) {
                 const tileSpan = cells[i*4 + j].querySelector('span')
 
                 tileSpan.className = 'tile'
