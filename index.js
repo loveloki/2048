@@ -1,5 +1,9 @@
 const cells = document.querySelectorAll('.cell')
 
+function getRandomNumber(max) {
+    return parseInt(Math.random()*100 % max)
+}
+
 var _2048 = {
     chessboard: [
         [0, 0, 0, 0],
