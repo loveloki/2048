@@ -22,7 +22,90 @@
     color: #776e65;
     font-size: 55px;
     font-weight: bold;
-    background: #EEE4DA;
+    background: #cdc1b4;
     border-radius: 3px;
 }
 
+.tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+}
+
+.tile-0 {
+    background: #cdc1b4;
+}
+
+.tile-1 {
+    background: #eee4da;
+}
+
+.tile-2 {
+    background: #EDE0C8;
+}
+
+.tile-3 {
+    color: #F9F6F2;
+    background: #F2B179;
+}
+
+.tile-4 {
+    color: #F9F6F2;
+    background: #F59563;
+}
+
+.tile-5 {
+    color: #F9F6F2;
+    background: #F67C5F;
+}
+
+.tile-6 {
+    color: #F9F6F2;
+    background: #F65E3B;
+}
+
+.tile-7 {
+    color: #F9F6F2;
+    background: #EDCF72;
+}
+
+.tile-8 {
+    color: #F9F6F2;
+    background: #EDCC61;
+}
+
+.tile-9 {
+    color: #F9F6F2;
+    background: #EDC850;
+}
+
+.tile-10 {
+    color: #F9F6F2;
+    background: #EDC53F;
+}
+
+.tile-11 {
+    color: #F9F6F2;
+    background: #EDC22E;
+}
+
+
+
+.new-tile {
+    animation: appear 200ms ease 100ms;
+    animation-fill-mode: backwards;
+}
+
+@keyframes appear {
+    from {
+        width: 0;
+        height: 0;
+    }
+
+    to {
+        width: 100px;
+        height: 100px;
+    }
+}
