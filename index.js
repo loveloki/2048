@@ -29,8 +29,7 @@ var _2048 = {
     },
     update: function update() {
         //对nextTile添加相应的className
-        const [nextX, nextY] = [...this.nextTile]
-        cells[nextX*4 + nextY].querySelector('span').classList.add('new-tile')
+        this.updateNextTile()
         //绘制chessboard
         for (let i = 0; i < this.chessboard.length; i++) {
             for (let j = 0; j < this.chessboard.length; j++) {
@@ -69,6 +68,10 @@ var _2048 = {
     },
     changeChessboard: function changeChessboard() {
 
+    },
+    updateNextTile: function updateNextTile() {
+        const [nextX, nextY] = [...this.nextTile]
+        cells[nextX*4 + nextY].querySelector('span').classList.add('new-tile')
     },
     createNextTile: function createNextTile() {
         var x, y
