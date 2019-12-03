@@ -50,7 +50,13 @@ var _2048 = {
 
     },
     createNextTile: function createNextTile() {
+        var x, y
+        do {
+            [x, y] = [getRandomNumber(4), getRandomNumber(4)]
+        }while(this.chessboard[x][y] != 0)
+        var level = getRandomNumber(4)>2 ? 2 : 1
 
+        return [x, y, level]
     },
     updatePrevAndNextTile: function updatePrevAndNextTile() {
 
