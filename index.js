@@ -104,3 +104,5 @@ var _2048 = {
 document.querySelector('.new-game').addEventListener('click', event => {
     _2048.newGame()
 })
+
+_2048.newGame()
