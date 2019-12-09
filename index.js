@@ -70,7 +70,11 @@ var _2048 = {
         }
 
         //执行更新
-        this.update()
+        requestAnimationFrame( () => {
+            requestAnimationFrame( () => {
+                this.update()
+            })
+        })
     },
     changeChessboard: function changeChessboard() {
 
