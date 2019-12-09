@@ -14,7 +14,7 @@ var _2048 = {
     bestScore: 0,
     currentScore: 0,
     prevTile: undefined,
-    nextTile: undefined,
+    nextTile: [],
     move: function move(direction) {
 
     },
@@ -60,7 +60,7 @@ var _2048 = {
         //获取nextTile信息
         const [x, y, level] = this.createNextTile()
         //设置nextTile相关属性
-        this.nextTile = [x, y]
+        this.nextTile.push([x, y])
         this.chessboard[x][y] = level
 
         //执行更新
@@ -70,8 +70,9 @@ var _2048 = {
 
     },
     updateNextTile: function updateNextTile() {
-        const [nextX, nextY] = [...this.nextTile]
-        cells[nextX*4 + nextY].querySelector('span').classList.add('new-tile')
+        this.nextTile.map(([x, y]) => {
+            cells[x*4 + y].querySelector('span').classList.add('new-tile')
+        })
     },
     createNextTile: function createNextTile() {
         var x, y
