@@ -50,10 +50,14 @@ var _2048 = {
         for (let i = 0; i < this.chessboard.length; i++) {
             for (let j = 0; j < this.chessboard.length; j++) {
                 const tileSpan = cells[i*4 + j].querySelector('span')
-
                 tileSpan.className = 'tile'
             }
         }
+        //将_2048重置为初始值
+        this.nextTile = []
+        this.prevTile = undefined
+        this.currentScore = 0
+
         //将所有chessboard元素填充为0
         this.chessboard.map( tiles => tiles.fill(0))
 
