@@ -17,6 +17,19 @@ var _2048 = {
     nextTile: [],
     move: function move(direction) {
         console.log('move ', direction)
+        //判断是否所有方向无法移动: 游戏结束
+        const flag = this.isGameOver()
+        if (flag) {
+            //显示游戏结束画面
+            return
+        }
+        //判断当前方向是否可以移动
+
+        //进行一次移动，都移到一边，便于合并操作，然后合并，再移动一次生成最终位置
+        //移动一次
+        //合并
+        //最后移动
+
     },
     merge: function merge() {
 
