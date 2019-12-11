@@ -24,12 +24,82 @@ var _2048 = {
             return
         }
         //判断当前方向是否可以移动
-
+        const go = this.isCanMove(direction)
         //进行一次移动，都移到一边，便于合并操作，然后合并，再移动一次生成最终位置
         //移动一次
+        if (go) {
+            this.moveTo(direction)
+        }
         //合并
         //最后移动
 
+    },
+    moveTo: function moveTo(direction) {
+        const len = this.chessboard.length
+        //左右移动i不变，上下移动j不变
+        if (direction == 'left') {
+            for (let i = 0; i < len; i++) {
+                for (let j = 0; j < len - 1; j++) {
+                    const tile = this.chessboard[i][j]
+                    if (tile == 0) {
+                        //如果为0，和下一个不是0的tile交换
+                        for (let k = j; k < len - 1; k++) {
+                            const nextNot0Tile = this.chessboard[i][k]
+                            if (nextNot0Tile != 0) {
+                                [tile, nextNot0Tile] = [nextNot0Tile, tile]
+                            }
+                        }
+                    }
+                }
+            }
+        }else if (direction == 'right') {
+            for (let i = 0; i < len; i++) {
+                for (let j = 0; j < len - 1; j++) {
+                    const pos = len - 1
+                    const tile = this.chessboard[i][pos - j];
+                    if (tile == 0) {
+                        //如果为0，和上一个不是0的tile交换
+                        for (let k = j; k < len - 1; k++) {
+                            const nextNot0Tile = this.chessboard[i][pos - k]
+                            if (nextNot0Tile != 0) {
+                                [tile, nextNot0Tile] = [nextNot0Tile, tile]
+                            }
+                        }
+                    }
+                }
+            }
+        }else if (direction == 'up') {
+            for (let i = 0; i < len - 1; i++) {
+                for (let j = 0; j < len; j++) {
+                    const tile = this.chessboard[i][j]
+                    if (tile == 0) {
+                        //如果为0，和下一个不是0的tile交换
+                        for (let k = i; k < len - 1; k++) {
+                            const nextNot0Tile = this.chessboard[k][j]
+                            if (nextNot0Tile != 0) {
+                                [tile, nextNot0Tile] = [nextNot0Tile, tile]
+                            }
+                        }
+                    }
+                }
+            }
+        }else if (direction == 'down') {
+            for (let i = 0; i < len - 1; i++) {
+                for (let j = 0; j < len; j++) {
+                    const pos = len - 1
+                    const tile = this.chessboard[pos - i][j];
+                    if (tile == 0) {
+                        //如果为0，和上一个不是0的tile交换
+                        for (let k = i; k < len - 1; k++) {
+                            const nextNot0Tile = this.chessboard[pos - k][j]
+                            if (nextNot0Tile != 0) {
+                                [tile, nextNot0Tile] = [nextNot0Tile, tile]
+                            }
+                        }
+                    }
+                }
+            }
+        }
     },
     merge: function merge() {
 
