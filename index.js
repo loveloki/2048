@@ -37,8 +37,34 @@ var _2048 = {
     isWin: function isWin() {
 
     },
-    isCanMove: function isCanWin() {
-
+    isCanMove: function isCanMove(direction) {
+        if (direction == 'left' || direction == 'right') {
+            for (let i = 0; i < this.chessboard.length; i++) {
+                for (let j = 0; j < this.chessboard.length; j++) {
+                    const tile = this.chessboard[i][j]
+                    if (tile == 0) {
+                        return true
+                    }
+                    if (i != 0 && tile == this.chessboard[i][j - 1]) {
+                        return true
+                    }
+                }
+            }
+        }else if(direction == 'up' || direction == 'down') {
+            for (let i = 0; i < this.chessboard.length; i++) {
+                for (let j = 0; j < this.chessboard.length; j++) {
+                    const tile = this.chessboard[i][j]
+                    if (tile == 0) {
+                        return true
+                    }
+                    if (j != 0 && tile == this.chessboard[i - 1][j]) {
+                        return true
+                    }
+                }
+            }
+        }else{
+            return false
+        }
     },
     update: function update() {
         //对nextTile添加相应的className
