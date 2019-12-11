@@ -136,15 +136,18 @@ var _2048 = {
 
     },
     isGameOver: function isGameOver() {
-        for (let i = 1; i < this.chessboard.length; i++) {
-            for (let j = 1; j < this.chessboard.length; j++) {
+        for (let i = 0; i < this.chessboard.length; i++) {
+            for (let j = 0; j < this.chessboard.length; j++) {
                 const tile = this.chessboard[i][j]
-
-                if (tile == 0 || tile == this.chessboard[i][j - 1]) {
+                if (tile == 0) {
                     return false
-                }
-                if (tile == this.chessboard[i - 1][j]) {
-                    return false
+                }else if (i != 0 || j != 0) {
+                    if (tile == this.chessboard[i][j - 1]) {
+                        return false
+                    }
+                    if (tile == this.chessboard[i - 1][j]) {
+                        return false
+                    }
                 }
             }
         }
