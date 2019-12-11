@@ -26,13 +26,14 @@ var _2048 = {
         //判断当前方向是否可以移动
         const go = this.isCanMove(direction)
         //进行一次移动，都移到一边，便于合并操作，然后合并，再移动一次生成最终位置
-        //移动一次
         if (go) {
+            //移动一次
             this.moveTo(direction)
-        }
-        //合并
-        //最后移动
+            //合并
+            this.merge(direction)
+            //最后移动
 
+        }
     },
     moveTo: function moveTo(direction) {
         const len = this.chessboard.length
@@ -101,8 +102,76 @@ var _2048 = {
             }
         }
     },
-    merge: function merge() {
-
+    merge: function merge(direction) {
+        const len = this.chessboard.length
+        //左右移动i不变，上下移动j不变
+        if (direction == 'left') {
+            for (let i = 0; i < len; i++) {
+                for (let j = 0; j < len - 1; j++) {
+                    const tile = this.chessboard[i][j]
+                    if (tile == this.chessboard[i][j + 1]) {
+                        tile++
+                        this.chessboard[i][j + 1] = 0
+                        //合并完之后下一个是0，需要跳过
+                        continue
+                    }
+                    if (tile == 0) {
+                        //遇到0说明已经合并完毕
+                        break
+                    }
+                }
+            }
+        }else if (direction == 'right') {
+            for (let i = 0; i < len; i++) {
+                for (let j = 0; j < len - 1; j++) {
+                    const pos = len - 1
+                    const tile = this.chessboard[i][pos - j]
+                    if (tile == this.chessboard[i][pos - j - 1]) {
+                        tile++
+                        this.chessboard[i][pos - j - 1] = 0
+                        //合并完之后下一个是0，需要跳过
+                        continue
+                    }
+                    if (tile == 0) {
+                        //遇到0说明已经合并完毕
+                        break
+                    }
+                }
+            }
+        }else if (direction == 'up') {
+            for (let i = 0; i < len - 1; i++) {
+                for (let j = 0; j < len; j++) {
+                    const tile = this.chessboard[i][j]
+                    if (tile == this.chessboard[i + 1][j]) {
+                        tile++
+                        this.chessboard[i + 1][j] = 0
+                        //合并完之后下一个是0，需要跳过
+                        continue
+                    }
+                    if (tile == 0) {
+                        //遇到0说明已经合并完毕
+                        break
+                    }
+                }
+            }
+        }else if (direction == 'down') {
+            for (let i = 0; i < len - 1; i++) {
+                for (let j = 0; j < len; j++) {
+                    const pos = len - 1
+                    const tile = this.chessboard[pos - i][j];
+                    if (tile == this.chessboard[pos - i - 1][j]) {
+                        tile++
+                        this.chessboard[pos - i - 1][j] = 0
+                        //合并完之后下一个是0，需要跳过
+                        continue
+                    }
+                    if (tile == 0) {
+                        //遇到0说明已经合并完毕
+                        break
+                    }
+                }
+            }
+        }
     },
     isWin: function isWin() {
 
