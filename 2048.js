@@ -289,7 +289,7 @@ var _2048 = {
             const [x, y, level] = this.createNextTile()
             //设置nextTile相关属性
             this.nextTile.push([x, y])
-            this.chessboard[x][y].level = level
+            this.chessboard[x][y].setLevel(level)
         }
 
         //执行更新
