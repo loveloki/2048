@@ -283,20 +283,6 @@ var _2048 = {
             }
             this.chessboard.push(line)
         }
-        //将html所有的className重置为初始值
-        for (let i = 0; i < this.gridLength; i++) {
-            for (let j = 0; j < this.gridLength; j++) {
-                const tileSpan = cells[i*4 + j].querySelector('span')
-                tileSpan.className = 'tile'
-            }
-        }
-        //将_2048重置为初始值
-        this.nextTile = []
-        this.prevTile = undefined
-        this.currentScore = 0
-
-        //将所有chessboard元素填充为0
-        //this.chessboard.map( tiles => tiles.fill(0))
 
         //获取nextTile信息
         for (let i = 0; i < 2; i++) {
@@ -314,7 +300,7 @@ var _2048 = {
         })
     },
     restart: function restart() {
-
+        
     },
     changeChessboard: function changeChessboard() {
 
