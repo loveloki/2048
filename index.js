@@ -121,7 +121,7 @@ var _2048 = {
                 for (let j = 0; j < len - 1; j++) {
                     const tile = this.chessboard[i][j]
                     if (tile == this.chessboard[i][j + 1]) {
-                        tile++
+                        this.chessboard[i][j]++
                         this.chessboard[i][j + 1] = 0
                         //合并完之后下一个是0，需要跳过
                         continue
@@ -138,7 +138,7 @@ var _2048 = {
                     const pos = len - 1
                     const tile = this.chessboard[i][pos - j]
                     if (tile == this.chessboard[i][pos - j - 1]) {
-                        tile++
+                        this.chessboard[i][pos - j]++
                         this.chessboard[i][pos - j - 1] = 0
                         //合并完之后下一个是0，需要跳过
                         continue
@@ -154,7 +154,7 @@ var _2048 = {
                 for (let j = 0; j < len; j++) {
                     const tile = this.chessboard[i][j]
                     if (tile == this.chessboard[i + 1][j]) {
-                        tile++
+                        this.chessboard[i][j]++
                         this.chessboard[i + 1][j] = 0
                         //合并完之后下一个是0，需要跳过
                         continue
@@ -171,7 +171,7 @@ var _2048 = {
                     const pos = len - 1
                     const tile = this.chessboard[pos - i][j];
                     if (tile == this.chessboard[pos - i - 1][j]) {
-                        tile++
+                        this.chessboard[pos - i][j]++
                         this.chessboard[pos - i - 1][j] = 0
                         //合并完之后下一个是0，需要跳过
                         continue
