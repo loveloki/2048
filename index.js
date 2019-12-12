@@ -193,33 +193,69 @@ var _2048 = {
 
     },
     isCanMove: function isCanMove(direction) {
-        if (direction == 'left' || direction == 'right') {
-            for (let i = 0; i < this.chessboard.length; i++) {
-                for (let j = 0; j < this.chessboard.length; j++) {
+        const len = this.chessboard.length
+
+        if (direction == 'left') {
+            for (let i = 0; i < len; i++) {
+                for (let j = 0; j < len - 1; j++) {
                     const tile = this.chessboard[i][j]
-                    if (tile == 0) {
+                    //tile为0，下一个tile不为0
+                    if (tile == 0 && this.chessboard[i][j + 1] > 0) {
                         return true
                     }
-                    if (i != 0 && tile == this.chessboard[i][j - 1]) {
+                    //tile不为0，并且和下一个tile相等
+                    if (tile != 0 && tile == this.chessboard[i][j + 1]) {
                         return true
                     }
                 }
             }
-        }else if(direction == 'up' || direction == 'down') {
-            for (let i = 0; i < this.chessboard.length; i++) {
-                for (let j = 0; j < this.chessboard.length; j++) {
-                    const tile = this.chessboard[i][j]
-                    if (tile == 0) {
+        }else if(direction == 'right') {
+            for (let i = 0; i < len; i++) {
+                for (let j = 0; j < len - 1; j++) {
+                    const pos = len - 1
+                    const tile = this.chessboard[i][pos - j]
+                    //tile为0，上一个tile不为0
+                    if (tile == 0 && this.chessboard[i][pos - j - 1] > 0) {
                         return true
                     }
-                    if (j != 0 && tile == this.chessboard[i - 1][j]) {
+                    //tile不为0，并且和上一个tile相等
+                    if (tile != 0 && tile == this.chessboard[i][pos - j - 1]) {
                         return true
                     }
                 }
             }
-        }else{
-            return false
+        }else if(direction == 'up') {
+            for (let i = 0; i < len - 1; i++) {
+                for (let j = 0; j < len; j++) {
+                    const tile = this.chessboard[i][j]
+                    //tile为0，下一个tile不为0
+                    if (tile == 0 && this.chessboard[i + 1][j]) {
+                        return true
+                    }
+                    //tile不为0，并且和下一个tile相等
+                    if (tile != 0 && tile == this.chessboard[i + 1][j]) {
+                        return true
+                    }
+                }
+            }
+        }else if(direction == 'down') {
+            for (let i = 0; i < len - 1; i++) {
+                for (let j = 0; j < len; j++) {
+                    const pos = len - 1
+                    const tile = this.chessboard[pos - i][j]
+                    //tile为0，上一个tile不为0
+                    if (tile == 0 && this.chessboard[pos - i - 1][j]) {
+                        return true
+                    }
+                    //tile不为0，并且和上一个tile相等
+                    if (tile != 0 && tile == this.chessboard[pos - i - 1][j]) {
+                        return true
+                    }
+                }
+            }
         }
+
+        return false
     },
     update: function update() {
         //对nextTile添加相应的className
