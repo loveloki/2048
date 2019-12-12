@@ -296,11 +296,14 @@ var _2048 = {
                 const tile = this.chessboard[i][j]
                 if (tile == 0) {
                     return false
-                }else if (i != 0 || j != 0) {
-                    if (tile == this.chessboard[i][j - 1]) {
+                }
+                if (i != 0) {
+                    if (tile == this.chessboard[i - 1][j]) {
                         return false
                     }
-                    if (tile == this.chessboard[i - 1][j]) {
+                }
+                if (j != 0) {
+                    if (tile == this.chessboard[i][j - 1]) {
                         return false
                     }
                 }
