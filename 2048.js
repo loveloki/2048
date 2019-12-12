@@ -35,83 +35,70 @@ var _2048 = {
         }
     },
     moveTo: function moveTo(direction) {
-        //数组名太长，提取成为一个专用函数
-        function exchange(a, b) {
-            const [i, j, x, y] = [...a, ...b]
-
-            //Q：直接交换会有变量未定义就被使用的问题（bug？）
-            return [this.chessboard[i][j], this.chessboard[x][y]] = [this.chessboard[x][y], this.chessboard[i][j]]
-        }
         const len = this.gridLength
-        //左右移动i不变，上下移动j不变
+        
         if (direction == 'left') {
             for (let i = 0; i < len; i++) {
-                for (let j = 0; j < len - 1; j++) {
+                const notZero = []
+                const zero = []
+                for (let j = 0; j < len; j++) {
                     const tile = this.chessboard[i][j]
-                    if (tile == 0) {
-                        //如果为0，和下一个不是0的tile交换
-                        for (let k = j + 1; k < len; k++) {
-                            const nextNot0Tile = this.chessboard[i][k]
-                            if (nextNot0Tile != 0) {
-                                // [this.chessboard[i][j], this.chessboard[i][k]] = [this.chessboard[i][k], this.chessboard[i][j]]
-                                exchange.bind(this)([i, j], [i, k])
-                                break
-                            }
-                        }
+                    if (tile.level == 0) {
+                        zero.push(tile)
+                    }else{
+                        notZero.push(tile)
                     }
                 }
+                this.chessboard[i] = [...notZero, ...zero]
             }
         }else if (direction == 'right') {
             for (let i = 0; i < len; i++) {
-                for (let j = 0; j < len - 1; j++) {
-                    const pos = len - 1
-                    const tile = this.chessboard[i][pos - j];
-                    if (tile == 0) {
-                        //如果为0，和上一个不是0的tile交换
-                        for (let k = j + 1; k < len; k++) {
-                            const nextNot0Tile = this.chessboard[i][pos - k]
-                            if (nextNot0Tile != 0) {
-                                // [tile, nextNot0Tile] = [nextNot0Tile, tile]
-                                exchange.bind(this)([i, pos - j], [i, pos - k])
-                                break
-                            }
-                        }
-                    }
-                }
-            }
-        }else if (direction == 'up') {
-            for (let i = 0; i < len - 1; i++) {
+                const notZero = []
+                const zero = []
                 for (let j = 0; j < len; j++) {
                     const tile = this.chessboard[i][j]
-                    if (tile == 0) {
-                        //如果为0，和下一个不是0的tile交换
-                        for (let k = i + 1; k < len; k++) {
-                            const nextNot0Tile = this.chessboard[k][j]
-                            if (nextNot0Tile != 0) {
-                                // [tile, nextNot0Tile] = [nextNot0Tile, tile]
-                                exchange.bind(this)([i, j], [k, j])
-                                break
-                            }
-                        }
+                    if (tile.level == 0) {
+                        zero.push(tile)
+                    }else{
+                        notZero.push(tile)
                     }
+                }
+                this.chessboard[i] = [...zero, ...notZero]
+            }
+        }else if (direction == 'up') {
+            for (let j = 0; j < len; j++) {
+                const notZero = []
+                const zero = []
+                for (let i = 0; i < len; i++) {
+                    const tile = this.chessboard[i][j]
+                    if (tile.level == 0) {
+                        zero.push(tile)
+                    }else{
+                        notZero.push(tile)
+                    }
+                }
+                const row = [...notZero, ...zero]
+
+                for (let i = 0; i < len; i++) {
+                    this.chessboard[i][j] = row[i]
                 }
             }
         }else if (direction == 'down') {
-            for (let i = 0; i < len - 1; i++) {
-                for (let j = 0; j < len; j++) {
-                    const pos = len - 1
-                    const tile = this.chessboard[pos - i][j];
-                    if (tile == 0) {
-                        //如果为0，和上一个不是0的tile交换
-                        for (let k = i + 1; k < len; k++) {
-                            const nextNot0Tile = this.chessboard[pos - k][j]
-                            if (nextNot0Tile != 0) {
-                                // [tile, nextNot0Tile] = [nextNot0Tile, tile]
-                                exchange.bind(this)([pos - i, j], [pos - k, j])
-                                break
-                            }
-                        }
+            for (let j = 0; j < len; j++) {
+                const notZero = []
+                const zero = []
+                for (let i = 0; i < len; i++) {
+                    const tile = this.chessboard[i][j]
+                    if (tile.level == 0) {
+                        zero.push(tile)
+                    }else{
+                        notZero.push(tile)
                     }
+                }
+                const row = [...notZero, ...zero]
+
+                for (let i = 0; i < len; i++) {
+                    this.chessboard[i][j] = row[len - 1 - i]
                 }
             }
         }
