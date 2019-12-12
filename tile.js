@@ -12,6 +12,15 @@ var tile = {
         this.level = level
         this.position = position
     },
+    setLevel: function (level) {
+        this.level = level
+    },
+    setPosition: function (position) {
+        this.position = position
+    },
+    setPrevPosition: function (position) {
+        this.prevPosition = position
+    },
 }
 
 export default tile
