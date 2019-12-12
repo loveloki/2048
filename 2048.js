@@ -1,8 +1,8 @@
-const cells = document.querySelectorAll('.cell')
-
 function getRandomNumber(max) {
     return parseInt(Math.random()*100 % max)
 }
+
+const cells = document.querySelectorAll('.cell')
 
 var _2048 = {
     chessboard: [
@@ -350,25 +350,4 @@ var _2048 = {
     },
 }
 
-document.querySelector('.new-game').addEventListener('click', event => {
-    _2048.newGame()
-})
-
-document.addEventListener("keydown", event => {
-    switch (event.key) {
-        case 'ArrowDown':
-            _2048.move('down')
-            break;
-        case 'ArrowUp':
-            _2048.move('up')
-            break;
-        case 'ArrowLeft':
-            _2048.move('left')
-            break;
-        case 'ArrowRight':
-            _2048.move('right')
-            break;
-    }
-})
-
-_2048.newGame()
+export default _2048
