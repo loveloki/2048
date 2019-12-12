@@ -313,6 +313,9 @@ var _2048 = {
             })
         })
     },
+    restart: function restart() {
+
+    },
     changeChessboard: function changeChessboard() {
 
     },
