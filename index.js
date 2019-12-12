@@ -30,7 +30,7 @@ var _2048 = {
             //移动一次
             this.moveTo(direction)
             //合并
-            this.merge(direction)
+            //this.merge(direction)
             //最后移动
 
         }
@@ -39,8 +39,7 @@ var _2048 = {
         //数组名太长，提取成为一个专用函数
         function exchange(a, b) {
             const [i, j, x, y] = [...a, ...b]
-            console.log([...a, ...b]);
-
+            
             [this.chessboard[i][j], this.chessboard[x][y]] = [this.chessboard[x][y], this.chessboard[i][j]]
         }
         const len = this.chessboard.length
@@ -55,7 +54,7 @@ var _2048 = {
                             const nextNot0Tile = this.chessboard[i][k]
                             if (nextNot0Tile != 0) {
                                 // [this.chessboard[i][j], this.chessboard[i][k]] = [this.chessboard[i][k], this.chessboard[i][j]]
-                                exchange([i, j], [i, k])
+                                exchange.bind(this)([i, j], [i, k])
                             }
                         }
                     }
@@ -72,7 +71,7 @@ var _2048 = {
                             const nextNot0Tile = this.chessboard[i][pos - k]
                             if (nextNot0Tile != 0) {
                                 // [tile, nextNot0Tile] = [nextNot0Tile, tile]
-                                exchange([i, pos - j], [i, pos - k])
+                                exchange.bind(this)([i, pos - j], [i, pos - k])
                             }
                         }
                     }
@@ -88,7 +87,7 @@ var _2048 = {
                             const nextNot0Tile = this.chessboard[k][j]
                             if (nextNot0Tile != 0) {
                                 // [tile, nextNot0Tile] = [nextNot0Tile, tile]
-                                exchange([i, j], [k, j])
+                                exchange.bind(this)([i, j], [k, j])
                             }
                         }
                     }
@@ -105,7 +104,7 @@ var _2048 = {
                             const nextNot0Tile = this.chessboard[pos - k][j]
                             if (nextNot0Tile != 0) {
                                 // [tile, nextNot0Tile] = [nextNot0Tile, tile]
-                                exchange([pos - i, j], [pos - k, j])
+                                exchange.bind(this)([pos - i, j], [pos - k, j])
                             }
                         }
                     }
