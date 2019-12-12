@@ -1,3 +1,5 @@
+import tile from './tile.js'
+
 function getRandomNumber(max) {
     return parseInt(Math.random()*100 % max)
 }
@@ -5,12 +7,8 @@ function getRandomNumber(max) {
 const cells = document.querySelectorAll('.cell')
 
 var _2048 = {
-    chessboard: [
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-    ],
+    chessboard: [],
+    gridLength: 4,
     bestScore: 0,
     currentScore: 0,
     prevTile: undefined,
@@ -44,7 +42,7 @@ var _2048 = {
             //Q：直接交换会有变量未定义就被使用的问题（bug？）
             return [this.chessboard[i][j], this.chessboard[x][y]] = [this.chessboard[x][y], this.chessboard[i][j]]
         }
-        const len = this.chessboard.length
+        const len = this.gridLength
         //左右移动i不变，上下移动j不变
         if (direction == 'left') {
             for (let i = 0; i < len; i++) {
@@ -119,7 +117,7 @@ var _2048 = {
         }
     },
     merge: function merge(direction) {
-        const len = this.chessboard.length
+        const len = this.gridLength
         //左右移动i不变，上下移动j不变
         if (direction == 'left') {
             for (let i = 0; i < len; i++) {
@@ -193,7 +191,7 @@ var _2048 = {
 
     },
     isCanMove: function isCanMove(direction) {
-        const len = this.chessboard.length
+        const len = this.gridLength
 
         if (direction == 'left') {
             for (let i = 0; i < len; i++) {
@@ -261,9 +259,9 @@ var _2048 = {
         //对nextTile添加相应的className
         this.updateNextTile()
         //绘制chessboard
-        for (let i = 0; i < this.chessboard.length; i++) {
-            for (let j = 0; j < this.chessboard.length; j++) {
-                const tileLevel = this.chessboard[i][j]
+        for (let i = 0; i < this.gridLength; i++) {
+            for (let j = 0; j < this.gridLength; j++) {
+                const tileLevel = this.chessboard[i][j].level
                 const tileSpan = cells[i*4 + j].querySelector('span')
 
                 if (tileLevel != 0) {
@@ -276,9 +274,18 @@ var _2048 = {
         }
     },
     newGame: function newGame() {
+        //初始化tile
+        for (let i = 0; i < this.gridLength; i++) {
+            let line = []
+            for (let j = 0; j < this.gridLength; j++) {
+                let t = tile.create(0, [i, j])
+                line.push(t)
+            }
+            this.chessboard.push(line)
+        }
         //将html所有的className重置为初始值
-        for (let i = 0; i < this.chessboard.length; i++) {
-            for (let j = 0; j < this.chessboard.length; j++) {
+        for (let i = 0; i < this.gridLength; i++) {
+            for (let j = 0; j < this.gridLength; j++) {
                 const tileSpan = cells[i*4 + j].querySelector('span')
                 tileSpan.className = 'tile'
             }
@@ -289,14 +296,14 @@ var _2048 = {
         this.currentScore = 0
 
         //将所有chessboard元素填充为0
-        this.chessboard.map( tiles => tiles.fill(0))
+        //this.chessboard.map( tiles => tiles.fill(0))
 
         //获取nextTile信息
         for (let i = 0; i < 2; i++) {
             const [x, y, level] = this.createNextTile()
             //设置nextTile相关属性
             this.nextTile.push([x, y])
-            this.chessboard[x][y] = level
+            this.chessboard[x][y].level = level
         }
 
         //执行更新
@@ -318,7 +325,7 @@ var _2048 = {
         var x, y
         do {
             [x, y] = [getRandomNumber(4), getRandomNumber(4)]
-        }while(this.chessboard[x][y] != 0)
+        }while(this.chessboard[x][y].level != 0)
         var level = getRandomNumber(4)>2 ? 2 : 1
 
         return [x, y, level]
@@ -327,8 +334,8 @@ var _2048 = {
 
     },
     isGameOver: function isGameOver() {
-        for (let i = 0; i < this.chessboard.length; i++) {
-            for (let j = 0; j < this.chessboard.length; j++) {
+        for (let i = 0; i < this.gridLength; i++) {
+            for (let j = 0; j < this.gridLength; j++) {
                 const tile = this.chessboard[i][j]
                 if (tile == 0) {
                     return false
