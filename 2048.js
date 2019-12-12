@@ -197,12 +197,12 @@ var _2048 = {
             for (let i = 0; i < len; i++) {
                 for (let j = 0; j < len - 1; j++) {
                     const tile = this.chessboard[i][j]
-                    //tile为0，下一个tile不为0
-                    if (tile == 0 && this.chessboard[i][j + 1] > 0) {
+                    //level为0，下一个level不为0
+                    if (tile.level == 0 && this.chessboard[i][j + 1].level > 0) {
                         return true
                     }
-                    //tile不为0，并且和下一个tile相等
-                    if (tile != 0 && tile == this.chessboard[i][j + 1]) {
+                    //level不为0，并且和下一个level相等
+                    if (tile.level != 0 && tile.level == this.chessboard[i][j + 1].level) {
                         return true
                     }
                 }
@@ -212,12 +212,12 @@ var _2048 = {
                 for (let j = 0; j < len - 1; j++) {
                     const pos = len - 1
                     const tile = this.chessboard[i][pos - j]
-                    //tile为0，上一个tile不为0
-                    if (tile == 0 && this.chessboard[i][pos - j - 1] > 0) {
+                    //level为0，上一个level不为0
+                    if (tile.level == 0 && this.chessboard[i][pos - j - 1].level > 0) {
                         return true
                     }
-                    //tile不为0，并且和上一个tile相等
-                    if (tile != 0 && tile == this.chessboard[i][pos - j - 1]) {
+                    //level不为0，并且和上一个level相等
+                    if (tile.level != 0 && tile.level == this.chessboard[i][pos - j - 1].level) {
                         return true
                     }
                 }
@@ -226,12 +226,12 @@ var _2048 = {
             for (let i = 0; i < len - 1; i++) {
                 for (let j = 0; j < len; j++) {
                     const tile = this.chessboard[i][j]
-                    //tile为0，下一个tile不为0
-                    if (tile == 0 && this.chessboard[i + 1][j]) {
+                    //level为0，下一个level不为0
+                    if (tile.level == 0 && this.chessboard[i + 1][j].level) {
                         return true
                     }
-                    //tile不为0，并且和下一个tile相等
-                    if (tile != 0 && tile == this.chessboard[i + 1][j]) {
+                    //level不为0，并且和下一个level相等
+                    if (tile.level != 0 && tile.level == this.chessboard[i + 1][j].level) {
                         return true
                     }
                 }
@@ -241,12 +241,12 @@ var _2048 = {
                 for (let j = 0; j < len; j++) {
                     const pos = len - 1
                     const tile = this.chessboard[pos - i][j]
-                    //tile为0，上一个tile不为0
-                    if (tile == 0 && this.chessboard[pos - i - 1][j]) {
+                    //level为0，上一个level不为0
+                    if (tile.level == 0 && this.chessboard[pos - i - 1][j].level) {
                         return true
                     }
-                    //tile不为0，并且和上一个tile相等
-                    if (tile != 0 && tile == this.chessboard[pos - i - 1][j]) {
+                    //level不为0，并且和上一个level相等
+                    if (tile.level != 0 && tile.level == this.chessboard[pos - i - 1][j].level) {
                         return true
                     }
                 }
@@ -349,16 +349,16 @@ var _2048 = {
         for (let i = 0; i < this.gridLength; i++) {
             for (let j = 0; j < this.gridLength; j++) {
                 const tile = this.chessboard[i][j]
-                if (tile == 0) {
+                if (tile.level == 0) {
                     return false
                 }
                 if (i != 0) {
-                    if (tile == this.chessboard[i - 1][j]) {
+                    if (tile.level == this.chessboard[i - 1][j].level) {
                         return false
                     }
                 }
                 if (j != 0) {
-                    if (tile == this.chessboard[i][j - 1]) {
+                    if (tile.level == this.chessboard[i][j - 1].level) {
                         return false
                     }
                 }
