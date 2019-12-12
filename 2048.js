@@ -300,7 +300,34 @@ var _2048 = {
         })
     },
     restart: function restart() {
-        
+        //将html所有的className重置为初始值
+        for (let i = 0; i < this.gridLength; i++) {
+            for (let j = 0; j < this.gridLength; j++) {
+                const tileSpan = cells[i*4 + j].querySelector('span')
+                tileSpan.className = 'tile'
+            }
+        }
+        //将所有chessboard元素填充为0
+        this.chessboard.map(tiles => tiles.map(tile => tile.level = 0))
+
+        //将_2048重置为初始值
+        this.nextTile = []
+        this.prevTile = undefined
+        this.currentScore = 0
+
+        //获取nextTile信息
+        for (let i = 0; i < 2; i++) {
+            const [x, y, level] = this.createNextTile()
+            //设置nextTile相关属性
+            this.nextTile.push([x, y])
+            this.chessboard[x][y].level = level
+        }
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                this.update()
+            })
+        })
     },
     changeChessboard: function changeChessboard() {
 
