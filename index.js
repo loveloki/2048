@@ -52,7 +52,7 @@ var _2048 = {
                     const tile = this.chessboard[i][j]
                     if (tile == 0) {
                         //如果为0，和下一个不是0的tile交换
-                        for (let k = j; k < len; k++) {
+                        for (let k = j + 1; k < len; k++) {
                             const nextNot0Tile = this.chessboard[i][k]
                             if (nextNot0Tile != 0) {
                                 // [this.chessboard[i][j], this.chessboard[i][k]] = [this.chessboard[i][k], this.chessboard[i][j]]
@@ -69,7 +69,7 @@ var _2048 = {
                     const tile = this.chessboard[i][pos - j];
                     if (tile == 0) {
                         //如果为0，和上一个不是0的tile交换
-                        for (let k = j; k < len; k++) {
+                        for (let k = j + 1; k < len; k++) {
                             const nextNot0Tile = this.chessboard[i][pos - k]
                             if (nextNot0Tile != 0) {
                                 // [tile, nextNot0Tile] = [nextNot0Tile, tile]
@@ -85,7 +85,7 @@ var _2048 = {
                     const tile = this.chessboard[i][j]
                     if (tile == 0) {
                         //如果为0，和下一个不是0的tile交换
-                        for (let k = i; k < len; k++) {
+                        for (let k = i + 1; k < len; k++) {
                             const nextNot0Tile = this.chessboard[k][j]
                             if (nextNot0Tile != 0) {
                                 // [tile, nextNot0Tile] = [nextNot0Tile, tile]
@@ -102,7 +102,7 @@ var _2048 = {
                     const tile = this.chessboard[pos - i][j];
                     if (tile == 0) {
                         //如果为0，和上一个不是0的tile交换
-                        for (let k = i; k < len; k++) {
+                        for (let k = i + 1; k < len; k++) {
                             const nextNot0Tile = this.chessboard[pos - k][j]
                             if (nextNot0Tile != 0) {
                                 // [tile, nextNot0Tile] = [nextNot0Tile, tile]
