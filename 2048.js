@@ -293,11 +293,7 @@ var _2048 = {
         }
 
         //执行更新
-        requestAnimationFrame( () => {
-            requestAnimationFrame( () => {
-                this.update()
-            })
-        })
+        this.update()
     },
     restart: function restart() {
         //将html所有的className重置为初始值
