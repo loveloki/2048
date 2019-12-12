@@ -39,8 +39,9 @@ var _2048 = {
         //数组名太长，提取成为一个专用函数
         function exchange(a, b) {
             const [i, j, x, y] = [...a, ...b]
-            
-            [this.chessboard[i][j], this.chessboard[x][y]] = [this.chessboard[x][y], this.chessboard[i][j]]
+
+            //Q：直接交换会有变量未定义就被使用的问题（bug？）
+            return [this.chessboard[i][j], this.chessboard[x][y]] = [this.chessboard[x][y], this.chessboard[i][j]]
         }
         const len = this.chessboard.length
         //左右移动i不变，上下移动j不变
