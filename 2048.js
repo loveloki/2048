@@ -36,7 +36,7 @@ var _2048 = {
     },
     moveTo: function moveTo(direction) {
         const len = this.gridLength
-        
+
         if (direction == 'left') {
             for (let i = 0; i < len; i++) {
                 const notZero = []
@@ -110,15 +110,11 @@ var _2048 = {
             for (let i = 0; i < len; i++) {
                 for (let j = 0; j < len - 1; j++) {
                     const tile = this.chessboard[i][j]
-                    if (tile == this.chessboard[i][j + 1]) {
-                        this.chessboard[i][j]++
-                        this.chessboard[i][j + 1] = 0
+                    if (tile.level != 0 && (tile.level == this.chessboard[i][j + 1].level)) {
+                        this.chessboard[i][j].setLevel(tile.level + 1)
+                        this.chessboard[i][j + 1].setLevel(0)
                         //合并完之后下一个是0，需要跳过
                         continue
-                    }
-                    if (tile == 0) {
-                        //遇到0说明已经合并完毕
-                        break
                     }
                 }
             }
@@ -127,15 +123,11 @@ var _2048 = {
                 for (let j = 0; j < len - 1; j++) {
                     const pos = len - 1
                     const tile = this.chessboard[i][pos - j]
-                    if (tile == this.chessboard[i][pos - j - 1]) {
-                        this.chessboard[i][pos - j]++
-                        this.chessboard[i][pos - j - 1] = 0
+                    if (tile.level != 0 && (tile.level == this.chessboard[i][pos - j - 1].level)) {
+                        this.chessboard[i][pos - j].setLevel(tile.level + 1)
+                        this.chessboard[i][pos - j - 1].setLevel(0)
                         //合并完之后下一个是0，需要跳过
                         continue
-                    }
-                    if (tile == 0) {
-                        //遇到0说明已经合并完毕
-                        break
                     }
                 }
             }
@@ -143,15 +135,11 @@ var _2048 = {
             for (let i = 0; i < len - 1; i++) {
                 for (let j = 0; j < len; j++) {
                     const tile = this.chessboard[i][j]
-                    if (tile == this.chessboard[i + 1][j]) {
-                        this.chessboard[i][j]++
-                        this.chessboard[i + 1][j] = 0
+                    if (tile.level != 0 && (tile.level == this.chessboard[i + 1][j].level)) {
+                        this.chessboard[i][j].setLevel(tile.level + 1)
+                        this.chessboard[i + 1][j].setLevel(0)
                         //合并完之后下一个是0，需要跳过
                         continue
-                    }
-                    if (tile == 0) {
-                        //遇到0说明已经合并完毕
-                        break
                     }
                 }
             }
@@ -160,15 +148,11 @@ var _2048 = {
                 for (let j = 0; j < len; j++) {
                     const pos = len - 1
                     const tile = this.chessboard[pos - i][j];
-                    if (tile == this.chessboard[pos - i - 1][j]) {
-                        this.chessboard[pos - i][j]++
-                        this.chessboard[pos - i - 1][j] = 0
+                    if (tile.level != 0 && (tile.level == this.chessboard[pos - i - 1][j].level)) {
+                        this.chessboard[pos - i][j].setLevel(tile.level)
+                        this.chessboard[pos - i - 1][j].setLevel(0)
                         //合并完之后下一个是0，需要跳过
                         continue
-                    }
-                    if (tile == 0) {
-                        //遇到0说明已经合并完毕
-                        break
                     }
                 }
             }
