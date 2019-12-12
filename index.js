@@ -3,7 +3,7 @@ import _2048 from './2048.js'
 var game = Object.create(_2048)
 
 document.querySelector('.new-game').addEventListener('click', event => {
-    game.newGame()
+    game.start()
 })
 
 document.addEventListener("keydown", event => {
@@ -23,4 +23,4 @@ document.addEventListener("keydown", event => {
     }
 })
 
-game.newGame()
+game.start()

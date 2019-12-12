@@ -273,7 +273,7 @@ var _2048 = {
             }
         }
     },
-    newGame: function newGame() {
+    start: function start() {
         //初始化tile
         for (let i = 0; i < this.gridLength; i++) {
             let line = []
