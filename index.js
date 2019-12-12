@@ -36,6 +36,13 @@ var _2048 = {
         }
     },
     moveTo: function moveTo(direction) {
+        //数组名太长，提取成为一个专用函数
+        function exchange(a, b) {
+            const [i, j, x, y] = [...a, ...b]
+            console.log([...a, ...b]);
+
+            [this.chessboard[i][j], this.chessboard[x][y]] = [this.chessboard[x][y], this.chessboard[i][j]]
+        }
         const len = this.chessboard.length
         //左右移动i不变，上下移动j不变
         if (direction == 'left') {
@@ -47,7 +54,8 @@ var _2048 = {
                         for (let k = j; k < len - 1; k++) {
                             const nextNot0Tile = this.chessboard[i][k]
                             if (nextNot0Tile != 0) {
-                                [tile, nextNot0Tile] = [nextNot0Tile, tile]
+                                // [this.chessboard[i][j], this.chessboard[i][k]] = [this.chessboard[i][k], this.chessboard[i][j]]
+                                exchange([i, j], [i, k])
                             }
                         }
                     }
@@ -63,7 +71,8 @@ var _2048 = {
                         for (let k = j; k < len - 1; k++) {
                             const nextNot0Tile = this.chessboard[i][pos - k]
                             if (nextNot0Tile != 0) {
-                                [tile, nextNot0Tile] = [nextNot0Tile, tile]
+                                // [tile, nextNot0Tile] = [nextNot0Tile, tile]
+                                exchange([i, pos - j], [i, pos - k])
                             }
                         }
                     }
@@ -78,7 +87,8 @@ var _2048 = {
                         for (let k = i; k < len - 1; k++) {
                             const nextNot0Tile = this.chessboard[k][j]
                             if (nextNot0Tile != 0) {
-                                [tile, nextNot0Tile] = [nextNot0Tile, tile]
+                                // [tile, nextNot0Tile] = [nextNot0Tile, tile]
+                                exchange([i, j], [k, j])
                             }
                         }
                     }
@@ -94,7 +104,8 @@ var _2048 = {
                         for (let k = i; k < len - 1; k++) {
                             const nextNot0Tile = this.chessboard[pos - k][j]
                             if (nextNot0Tile != 0) {
-                                [tile, nextNot0Tile] = [nextNot0Tile, tile]
+                                // [tile, nextNot0Tile] = [nextNot0Tile, tile]
+                                exchange([pos - i, j], [pos - k, j])
                             }
                         }
                     }
