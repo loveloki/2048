@@ -57,6 +57,7 @@ var _2048 = {
                             if (nextNot0Tile != 0) {
                                 // [this.chessboard[i][j], this.chessboard[i][k]] = [this.chessboard[i][k], this.chessboard[i][j]]
                                 exchange.bind(this)([i, j], [i, k])
+                                break
                             }
                         }
                     }
@@ -74,6 +75,7 @@ var _2048 = {
                             if (nextNot0Tile != 0) {
                                 // [tile, nextNot0Tile] = [nextNot0Tile, tile]
                                 exchange.bind(this)([i, pos - j], [i, pos - k])
+                                break
                             }
                         }
                     }
@@ -90,6 +92,7 @@ var _2048 = {
                             if (nextNot0Tile != 0) {
                                 // [tile, nextNot0Tile] = [nextNot0Tile, tile]
                                 exchange.bind(this)([i, j], [k, j])
+                                break
                             }
                         }
                     }
@@ -107,6 +110,7 @@ var _2048 = {
                             if (nextNot0Tile != 0) {
                                 // [tile, nextNot0Tile] = [nextNot0Tile, tile]
                                 exchange.bind(this)([pos - i, j], [pos - k, j])
+                                break
                             }
                         }
                     }
