@@ -111,51 +111,51 @@
 }
 
 .move-left-1 {
-    animation: move-left-1 200ms ease 100ms;
+    animation: move-left-1 650ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-left-2 {
-    animation: move-left-2 200ms ease 100ms;
+    animation: move-left-2 650ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-left-3 {
-    animation: move-left-3 200ms ease 100ms;
+    animation: move-left-3 650ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-right-1 {
-    animation: move-right-1 200ms ease 100ms;
+    animation: move-right-1 650ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-right-2 {
-    animation: move-right-2 200ms ease 100ms;
+    animation: move-right-2 650ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-right-3 {
-    animation: move-right-3 200ms ease 100ms;
+    animation: move-right-3 650ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-up-1 {
-    animation: move-up-1 200ms ease 100ms;
+    animation: move-up-1 650ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-up-2 {
-    animation: move-up-2 200ms ease 100ms;
+    animation: move-up-2 650ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-up-3 {
-    animation: move-up-3 200ms ease 100ms;
+    animation: move-up-3 650ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-down-1 {
-    animation: move-down-1 200ms ease 100ms;
+    animation: move-down-1 650ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-down-2 {
-    animation: move-down-2 200ms ease 100ms;
+    animation: move-down-2 650ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-down-3 {
-    animation: move-down-3 200ms ease 100ms;
+    animation: move-down-3 650ms ease 100ms;
     animation-fill-mode: backwards;
 }
 
@@ -165,7 +165,7 @@
     }
 
     to {
-        transform: translateX(-100px);
+        transform: translateX(-120px);
     }
 }
 @keyframes move-left-2 {
@@ -174,7 +174,7 @@
     }
 
     to {
-        transform: translateX(-200px);
+        transform: translateX(-240px);
     }
 }
 @keyframes move-left-3 {
@@ -183,7 +183,7 @@
     }
 
     to {
-        transform: translateX(-300px);
+        transform: translateX(-360px);
     }
 }
 @keyframes move-right-1 {
@@ -192,7 +192,7 @@
     }
 
     to {
-        transform: translateX(100px);
+        transform: translateX(120px);
     }
 }
 @keyframes move-right-2 {
@@ -201,7 +201,7 @@
     }
 
     to {
-        transform: translateX(200px);
+        transform: translateX(240px);
     }
 }
 @keyframes move-right-3 {
@@ -210,7 +210,7 @@
     }
 
     to {
-        transform: translateX(300px);
+        transform: translateX(360px);
     }
 }
 @keyframes move-up-1 {
@@ -219,7 +219,7 @@
     }
 
     to {
-        transform: translateY(-100px);
+        transform: translateY(-120px);
     }
 }
 @keyframes move-up-2 {
@@ -228,7 +228,7 @@
     }
 
     to {
-        transform: translateY(-200px);
+        transform: translateY(-240px);
     }
 }
 @keyframes move-up-3 {
@@ -237,7 +237,7 @@
     }
 
     to {
-        transform: translateY(-300px);
+        transform: translateY(-360px);
     }
 }
 @keyframes move-down-1 {
@@ -246,7 +246,7 @@
     }
 
     to {
-        transform: translateY(100px);
+        transform: translateY(120px);
     }
 }
 @keyframes move-down-2 {
@@ -255,7 +255,7 @@
     }
 
     to {
-        transform: translateY(200px);
+        transform: translateY(240px);
     }
 }
 @keyframes move-down-3 {
@@ -264,6 +264,6 @@
     }
 
     to {
-        transform: translateY(300px);
+        transform: translateY(360px);
     }
 }
