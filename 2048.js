@@ -134,7 +134,9 @@ var _2048 = {
     },
     merge: function merge(direction) {
         const len = this.gridLength
-        //左右移动i不变，上下移动j不变
+
+        //level被设置为0的tile需要更新的终点位置信息 -> 完成动画
+        //level被设置为0的tile的终点就是merge的元素的终点
         if (direction == 'left') {
             for (let i = 0; i < len; i++) {
                 for (let j = 0; j < len - 1; j++) {
@@ -142,6 +144,8 @@ var _2048 = {
                     if (tile.level != 0 && (tile.level == this.chessboard[i][j + 1].level)) {
                         this.chessboard[i][j].setLevel(tile.level + 1)
                         this.chessboard[i][j + 1].setLevel(0)
+                        //更新level被设置为0的tile的动画终点
+                        this.chessboard[i][j + 1].setEndPosition(this.chessboard[i][j].endPosition)
                         //合并完之后下一个是0，需要跳过
                         continue
                     }
@@ -155,6 +159,8 @@ var _2048 = {
                     if (tile.level != 0 && (tile.level == this.chessboard[i][pos - j - 1].level)) {
                         this.chessboard[i][pos - j].setLevel(tile.level + 1)
                         this.chessboard[i][pos - j - 1].setLevel(0)
+                        //更新level被设置为0的tile的动画终点
+                        this.chessboard[i][pos - j - 1].setEndPosition(this.chessboard[i][pos - j].endPosition)
                         //合并完之后下一个是0，需要跳过
                         continue
                     }
@@ -167,6 +173,8 @@ var _2048 = {
                     if (tile.level != 0 && (tile.level == this.chessboard[i + 1][j].level)) {
                         this.chessboard[i][j].setLevel(tile.level + 1)
                         this.chessboard[i + 1][j].setLevel(0)
+                        //更新level被设置为0的tile的动画终点
+                        this.chessboard[i + 1][j].setEndPosition(this.chessboard[i][j].endPosition)
                         //合并完之后下一个是0，需要跳过
                         continue
                     }
@@ -180,6 +188,8 @@ var _2048 = {
                     if (tile.level != 0 && (tile.level == this.chessboard[pos - i - 1][j].level)) {
                         this.chessboard[pos - i][j].setLevel(tile.level + 1)
                         this.chessboard[pos - i - 1][j].setLevel(0)
+                        //更新level被设置为0的tile的动画终点
+                        this.chessboard[pos - i - 1][j].setEndPosition(this.chessboard[pos - i][j].endPosition)
                         //合并完之后下一个是0，需要跳过
                         continue
                     }
