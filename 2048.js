@@ -149,7 +149,7 @@ var _2048 = {
                     const pos = len - 1
                     const tile = this.chessboard[pos - i][j];
                     if (tile.level != 0 && (tile.level == this.chessboard[pos - i - 1][j].level)) {
-                        this.chessboard[pos - i][j].setLevel(tile.level)
+                        this.chessboard[pos - i][j].setLevel(tile.level + 1)
                         this.chessboard[pos - i - 1][j].setLevel(0)
                         //合并完之后下一个是0，需要跳过
                         continue
