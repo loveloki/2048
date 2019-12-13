@@ -1,7 +1,8 @@
 var tile = {
     level: 0,
     postion: [0, 0],
-    prevPosition: null,
+    startPosition: null,
+    endPosition: null,
     create: function (level, position) {
         var t = Object.create(tile)
         t.init(level, position)
@@ -18,8 +19,11 @@ var tile = {
     setPosition: function (position) {
         this.position = position
     },
-    setPrevPosition: function (position) {
-        this.prevPosition = position
+    setStartPosition: function (position) {
+        this.startPosition = position
+    },
+    setEndPosition: function (position) {
+        this.endPosition = position
     },
 }
 
