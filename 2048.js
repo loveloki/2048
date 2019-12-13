@@ -7,6 +7,19 @@ function getRandomNumber(max) {
 const cells = document.querySelectorAll('.cell')
 
 var _2048 = {
+    showTilesList: function() {
+        //temp
+        let showList = []
+        for (let i = 0; i < this.gridLength; i++) {
+            let line = []
+            for (let j = 0; j < this.gridLength; j++) {
+                const level = this.chessboard[i][j].level
+                line.push(level)
+            }
+            showList.push(line)
+        }
+        console.table(showList)
+    },
     chessboard: [],
     gridLength: 4,
     bestScore: 0,
