@@ -52,6 +52,7 @@ var _2048 = {
     moveTo: function moveTo(direction) {
         const len = this.gridLength
 
+        //移动位置
         if (direction == 'left') {
             for (let i = 0; i < len; i++) {
                 const notZero = []
@@ -115,6 +116,19 @@ var _2048 = {
                 for (let i = 0; i < len; i++) {
                     this.chessboard[i][j] = row[len - 1 - i]
                 }
+            }
+        }
+
+        //更新新的（移动后的）位置信息
+        for (let i = 0; i < len; i++) {
+            for (let j = 0; j < len; j++) {
+                const tile = this.chessboard[i][j]
+                if (tile.startPosition == null && tile.level != 0) {
+                    let [x, y] = tile.position
+                    tile.setStartPosition([x, y])
+                    tile.setEndPosition([i, j])
+                }
+                tile.setPosition([i, j])
             }
         }
     },
