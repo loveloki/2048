@@ -111,51 +111,51 @@
 }
 
 .move-left-1 {
-    animation: move-left-1 650ms ease 100ms;
+    animation: move-left-1 200ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-left-2 {
-    animation: move-left-2 650ms ease 100ms;
+    animation: move-left-2 400ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-left-3 {
-    animation: move-left-3 650ms ease 100ms;
+    animation: move-left-3 600ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-right-1 {
-    animation: move-right-1 650ms ease 100ms;
+    animation: move-right-1 200ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-right-2 {
-    animation: move-right-2 650ms ease 100ms;
+    animation: move-right-2 400ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-right-3 {
-    animation: move-right-3 650ms ease 100ms;
+    animation: move-right-3 600ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-up-1 {
-    animation: move-up-1 650ms ease 100ms;
+    animation: move-up-1 200ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-up-2 {
-    animation: move-up-2 650ms ease 100ms;
+    animation: move-up-2 400ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-up-3 {
-    animation: move-up-3 650ms ease 100ms;
+    animation: move-up-3 600ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-down-1 {
-    animation: move-down-1 650ms ease 100ms;
+    animation: move-down-1 200ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-down-2 {
-    animation: move-down-2 650ms ease 100ms;
+    animation: move-down-2 400ms ease 100ms;
     animation-fill-mode: backwards;
 }
 .move-down-3 {
-    animation: move-down-3 650ms ease 100ms;
+    animation: move-down-3 600ms ease 100ms;
     animation-fill-mode: backwards;
 }
 
