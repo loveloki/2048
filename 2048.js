@@ -29,7 +29,6 @@ var _2048 = {
     prevTile: undefined,
     nextTile: [],
     move: function move(direction) {
-        console.log('move ', direction)
         //判断是否所有方向无法移动: 游戏结束
         const flag = this.isGameOver()
         if (flag) {
@@ -40,13 +39,29 @@ var _2048 = {
         const go = this.isCanMove(direction)
         //进行一次移动，都移到一边，便于合并操作，然后合并，再移动一次生成最终位置
         if (go) {
+            //每次移动要更新tile的position
+            //prevPosition存储最初的position
+            //position每次移动都需要改变， -> 和实际界面对应，避免不知道的bug出现
+
+
             //移动一次
             this.moveTo(direction)
-
             //合并
-            //this.merge(direction)
+            this.merge(direction)
             //最后移动
+            this.moveTo(direction)
 
+            //执行tile移动动画
+
+            //生成下一个（新的）tile
+            const [x, y, level] = this.createNextTile()
+            //移除之前的nextTile值
+            this.nextTile = []
+            //设置nextTile相关属性
+            this.nextTile.push([x, y])
+            this.chessboard[x][y].setLevel(level)
+            //更新界面
+            this.update()
         }
     },
     moveTo: function moveTo(direction) {
