@@ -7,6 +7,7 @@ function getRandomNumber(max) {
 const cells = document.querySelectorAll('.cell')
 
 var _2048 = {
+    tool: {
     showTilesList: function() {
         //temp
         let showList = []
@@ -19,6 +20,7 @@ var _2048 = {
             showList.push(line)
         }
         console.table(showList)
+    },
     },
     chessboard: [],
     gridLength: 4,
