@@ -278,6 +278,7 @@ var _2048 = {
                     tileSpan.innerText = 2 ** tileLevel
                     tileSpan.classList.add('tile-' + tileLevel)
                 }else{
+                    tileSpan.className = 'tile'
                     tileSpan.innerText = ''
                 }
             }
