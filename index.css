@@ -110,6 +110,23 @@
     }
 }
 
+.merge {
+    animation: merge 200ms ease 100ms;
+    animation-fill-mode: backwards;
+}
+
+@keyframes merge {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+
 .move-left-1 {
     animation: move-left-1 200ms ease 100ms;
     animation-fill-mode: backwards;
