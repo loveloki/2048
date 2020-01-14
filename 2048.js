@@ -126,10 +126,10 @@ var _2048 = {
                         notZero.push(tile)
                     }
                 }
-                const row = [...notZero, ...zero]
+                const row = [...zero, ...notZero]
 
                 for (let i = 0; i < len; i++) {
-                    this.chessboard[i][j] = row[len - 1 - i]
+                    this.chessboard[i][j] = row[i]
                 }
             }
         }
