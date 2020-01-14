@@ -8,26 +8,27 @@ const cells = document.querySelectorAll('.cell')
 
 var _2048 = {
     tool: {
-    showTilesList: function() {
-        //temp
-        let showList = []
-        for (let i = 0; i < this.gridLength; i++) {
-            let line = []
-            for (let j = 0; j < this.gridLength; j++) {
-                const level = this.chessboard[i][j].level
-                line.push(level)
+        showTilesList: function() {
+            //temp
+            let showList = []
+            for (let i = 0; i < this.gridLength; i++) {
+                let line = []
+                for (let j = 0; j < this.gridLength; j++) {
+                    const level = this.chessboard[i][j].level
+                    line.push(level)
+                }
+                showList.push(line)
             }
-            showList.push(line)
-        }
-        console.table(showList)
-    },
+            console.table(showList)
+        },
     },
     chessboard: [],
     gridLength: 4,
     bestScore: 0,
     currentScore: 0,
-    prevTile: undefined,
+    prevTile: [],
     nextTile: [],
+    mergedTile: [],
     move: function move(direction) {
         //判断是否所有方向无法移动: 游戏结束
         const flag = this.isGameOver()
@@ -55,8 +56,6 @@ var _2048 = {
 
             //生成下一个（新的）tile
             const [x, y, level] = this.createNextTile()
-            //移除之前的nextTile值
-            this.nextTile = []
             //设置nextTile相关属性
             this.nextTile.push([x, y])
             this.chessboard[x][y].setLevel(level)
@@ -159,6 +158,7 @@ var _2048 = {
                     if (tile.level != 0 && (tile.level == this.chessboard[i][j + 1].level)) {
                         this.chessboard[i][j].setLevel(tile.level + 1)
                         cells[i*4 + j].querySelector('span').classList.add('merge')
+                        this.mergedTile.push([i, j])
                         this.chessboard[i][j + 1].setLevel(0)
                         //更新level被设置为0的tile的动画终点
                         this.chessboard[i][j + 1].setEndPosition(this.chessboard[i][j].endPosition)
@@ -175,6 +175,7 @@ var _2048 = {
                     if (tile.level != 0 && (tile.level == this.chessboard[i][pos - j - 1].level)) {
                         this.chessboard[i][pos - j].setLevel(tile.level + 1)
                         cells[i*4 + pos - j].querySelector('span').classList.add('merge')
+                        this.mergedTile.push([i, pos - j])
                         this.chessboard[i][pos - j - 1].setLevel(0)
                         //更新level被设置为0的tile的动画终点
                         this.chessboard[i][pos - j - 1].setEndPosition(this.chessboard[i][pos - j].endPosition)
@@ -190,6 +191,7 @@ var _2048 = {
                     if (tile.level != 0 && (tile.level == this.chessboard[i + 1][j].level)) {
                         this.chessboard[i][j].setLevel(tile.level + 1)
                         cells[i*4 + j].querySelector('span').classList.add('merge')
+                        this.mergedTile.push([i, j])
                         this.chessboard[i + 1][j].setLevel(0)
                         //更新level被设置为0的tile的动画终点
                         this.chessboard[i + 1][j].setEndPosition(this.chessboard[i][j].endPosition)
@@ -206,6 +208,7 @@ var _2048 = {
                     if (tile.level != 0 && (tile.level == this.chessboard[pos - i - 1][j].level)) {
                         this.chessboard[pos - i][j].setLevel(tile.level + 1)
                         cells[(pos - i)*4 + j].querySelector('span').classList.add('merge')
+                        this.mergedTile.push([pos - i, j])
                         this.chessboard[pos - i - 1][j].setLevel(0)
                         //更新level被设置为0的tile的动画终点
                         this.chessboard[pos - i - 1][j].setEndPosition(this.chessboard[pos - i][j].endPosition)
@@ -302,6 +305,30 @@ var _2048 = {
                 }
             }
         }
+
+        //更新prevTile的nextTile值
+        this.prevTile = this.nextTile
+        this.nextTile = []
+        //去掉多余的className
+        const prevs = this.prevTile
+        prevs.map( ([x, y]) => {
+            const level = this.chessboard[x][y].level
+            if (level != 0) {
+                //cells[x*4 + y].querySelector('span').classList.remove('new-tile')
+            }
+        })
+
+        this.mergedTile.map( ([x, y]) => {
+            const level = this.chessboard[x][y].level
+
+            cells[x*4 + y].querySelector('span').classList.remove('merge')
+            console.log(level-1);
+
+            cells[x*4 + y].querySelector('span').classList.remove('tile-' + (level-1))
+        })
+
+
+        this.tool.showTilesList.bind(this)()
     },
     start: function start() {
         //初始化tile
@@ -338,7 +365,7 @@ var _2048 = {
 
         //将_2048重置为初始值
         this.nextTile = []
-        this.prevTile = undefined
+        this.prevTile = []
         this.currentScore = 0
 
         //获取nextTile信息
