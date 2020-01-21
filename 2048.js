@@ -217,9 +217,6 @@ var _2048 = {
             }
         }
     },
-    isWin: function () {
-
-    },
     isCanMove: function (direction) {
         const len = this.gridLength
 
@@ -289,20 +286,7 @@ var _2048 = {
         //对nextTile添加相应的className
         this.updateNextTile()
         //绘制chessboard
-        for (let i = 0; i < this.gridLength; i++) {
-            for (let j = 0; j < this.gridLength; j++) {
-                const tileLevel = this.chessboard[i][j].level
-                const tileSpan = cells[i*4 + j].querySelector('span')
-
-                if (tileLevel != 0) {
-                    tileSpan.innerText = 2 ** tileLevel
-                    tileSpan.classList.add('tile-' + tileLevel)
-                }else{
-                    tileSpan.className = 'tile'
-                    tileSpan.innerText = ''
-                }
-            }
-        }
+        this.drawChessboard()
 
         //更新prevTile的nextTile值
         this.prevTile = this.nextTile
@@ -378,9 +362,6 @@ var _2048 = {
             })
         })
     },
-    changeChessboard: function () {
-
-    },
     updateNextTile: function () {
         this.nextTile.map(([x, y]) => {
             cells[x*4 + y].querySelector('span').classList.add('new-tile')
@@ -394,9 +375,6 @@ var _2048 = {
         var level = getRandomNumber(4)>2 ? 2 : 1
 
         return [x, y, level]
-    },
-    updatePrevAndNextTile: function () {
-
     },
     isGameOver: function () {
         for (let i = 0; i < this.gridLength; i++) {
