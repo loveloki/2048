@@ -320,13 +320,12 @@ var _2048 = {
             const level = this.chessboard[x][y].level
 
             cells[x*4 + y].querySelector('span').classList.remove('merge')
-            console.log(level-1);
 
             cells[x*4 + y].querySelector('span').classList.remove('tile-' + (level-1))
         })
 
 
-        this.tool.showTilesList.bind(this)()
+        // this.tool.showTilesList.bind(this)()
     },
     start: function start() {
         //初始化tile
@@ -421,6 +420,21 @@ var _2048 = {
 
         return true
     },
+    changeClassList: function (type, value, positionX, positionY) {
+        const cell = cells[positionX*4 + positionY]
+
+        switch (type) {
+            case 'add':
+                cell.classList.add(value)
+                break
+            case 'remove':
+                cell.classList.remove(value)
+                break
+            default:
+                throw `changeClassList 调用出错！ ${type}  ${value}  ${positionX}  ${positionY}`
+                break
+        }
+    }
 }
 
 export default _2048
