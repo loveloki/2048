@@ -421,14 +421,15 @@ var _2048 = {
         return true
     },
     changeClassList: function (type, value, positionX, positionY) {
-        const cell = cells[positionX*4 + positionY]
+        const span = cells[positionX*4 + positionY].querySelector('span')
+        const className = 'tile-' + value
 
         switch (type) {
             case 'add':
-                cell.classList.add(value)
+                span.classList.add(className)
                 break
             case 'remove':
-                cell.classList.remove(value)
+                span.classList.remove(className)
                 break
             default:
                 throw `changeClassList 调用出错！ ${type}  ${value}  ${positionX}  ${positionY}`
