@@ -436,6 +436,23 @@ var _2048 = {
                 break
         }
     },
+    drawChessboard: function () {
+      //绘制chessboard
+      for (let i = 0; i < this.gridLength; i++) {
+        for (let j = 0; j < this.gridLength; j++) {
+            const tileLevel = this.chessboard[i][j].level
+            const tileSpan = cells[i*4 + j].querySelector('span')
+
+            if (tileLevel != 0) {
+                this.changeSpanText(tileLevel, i, j)
+                this.changeClassList('add', tileLevel, i, j)
+            }else{
+                tileSpan.className = 'tile'
+                this.changeSpanText(0, i, j)
+            }
+        }
+    }
+    },
     changeSpanText: function (level, positionX, positionY) {
         const span = cells[positionX*4 + positionY].querySelector('span')
         const value = (level == 0) ? '' : (2 ** level)
