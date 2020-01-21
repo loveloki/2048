@@ -24,8 +24,6 @@ var _2048 = {
     },
     chessboard: [],
     gridLength: 4,
-    bestScore: 0,
-    currentScore: 0,
     prevTile: [],
     nextTile: [],
     mergedTile: [],
@@ -366,7 +364,6 @@ var _2048 = {
         //将_2048重置为初始值
         this.nextTile = []
         this.prevTile = []
-        this.currentScore = 0
 
         //获取nextTile信息
         for (let i = 0; i < 2; i++) {
