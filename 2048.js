@@ -435,6 +435,12 @@ var _2048 = {
                 throw `changeClassList 调用出错！ ${type}  ${value}  ${positionX}  ${positionY}`
                 break
         }
+    },
+    changeSpanText: function (level, positionX, positionY) {
+        const span = cells[positionX*4 + positionY].querySelector('span')
+        const value = (level == 0) ? '' : (2 ** level)
+
+        span.textContent = value
     }
 }
 
