@@ -27,7 +27,7 @@ var _2048 = {
     prevTile: [],
     nextTile: [],
     mergedTile: [],
-    move: function move(direction) {
+    move: function (direction) {
         //判断是否所有方向无法移动: 游戏结束
         const flag = this.isGameOver()
         if (flag) {
@@ -61,7 +61,7 @@ var _2048 = {
             this.update()
         }
     },
-    moveTo: function moveTo(direction) {
+    moveTo: function (direction) {
         const len = this.gridLength
 
         //移动位置
@@ -144,7 +144,7 @@ var _2048 = {
             }
         }
     },
-    merge: function merge(direction) {
+    merge: function (direction) {
         const len = this.gridLength
 
         //level被设置为0的tile需要更新的终点位置信息 -> 完成动画
@@ -217,10 +217,10 @@ var _2048 = {
             }
         }
     },
-    isWin: function isWin() {
+    isWin: function () {
 
     },
-    isCanMove: function isCanMove(direction) {
+    isCanMove: function (direction) {
         const len = this.gridLength
 
         if (direction == 'left') {
@@ -285,7 +285,7 @@ var _2048 = {
 
         return false
     },
-    update: function update() {
+    update: function () {
         //对nextTile添加相应的className
         this.updateNextTile()
         //绘制chessboard
@@ -327,7 +327,7 @@ var _2048 = {
 
         // this.tool.showTilesList.bind(this)()
     },
-    start: function start() {
+    start: function () {
         //初始化tile
         for (let i = 0; i < this.gridLength; i++) {
             let line = []
@@ -349,7 +349,7 @@ var _2048 = {
         //执行更新
         this.update()
     },
-    restart: function restart() {
+    restart: function () {
         //将html所有的className重置为初始值
         for (let i = 0; i < this.gridLength; i++) {
             for (let j = 0; j < this.gridLength; j++) {
@@ -378,15 +378,15 @@ var _2048 = {
             })
         })
     },
-    changeChessboard: function changeChessboard() {
+    changeChessboard: function () {
 
     },
-    updateNextTile: function updateNextTile() {
+    updateNextTile: function () {
         this.nextTile.map(([x, y]) => {
             cells[x*4 + y].querySelector('span').classList.add('new-tile')
         })
     },
-    createNextTile: function createNextTile() {
+    createNextTile: function () {
         var x, y
         do {
             [x, y] = [getRandomNumber(4), getRandomNumber(4)]
@@ -395,10 +395,10 @@ var _2048 = {
 
         return [x, y, level]
     },
-    updatePrevAndNextTile: function updatePrevAndNextTile() {
+    updatePrevAndNextTile: function () {
 
     },
-    isGameOver: function isGameOver() {
+    isGameOver: function () {
         for (let i = 0; i < this.gridLength; i++) {
             for (let j = 0; j < this.gridLength; j++) {
                 const tile = this.chessboard[i][j]
