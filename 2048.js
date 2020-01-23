@@ -436,7 +436,28 @@ var _2048 = {
         const value = (level == 0) ? '' : (2 ** level)
 
         span.textContent = value
-    }
+	},
+	init: function () {
+		//暂时不做存档：从localStorage读取数据
+
+		//初始化tile
+		for (let i = 0; i < this.gridLength; i++) {
+			let line = []
+			for (let j = 0; j < this.gridLength; j++) {
+				let t = tile.create(0, [i, j])
+				line.push(t)
+			}
+			this.chessboard.push(line)
+		}
+
+		//获取nextTile信息
+		for (let i = 0; i < 2; i++) {
+			const [x, y, level] = this.createNextTile()
+			//设置nextTile相关属性
+			this.nextTile.push([x, y])
+			this.chessboard[x][y].setLevel(level)
+		}
+	}
 }
 
 export default _2048
