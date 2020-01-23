@@ -13,15 +13,19 @@ const Game = {
         switch (event.key) {
             case 'ArrowDown':
                 this.game.move('down')
+                this.update()
                 break;
             case 'ArrowUp':
                 this.game.move('up')
+                this.update()
                 break;
             case 'ArrowLeft':
                 this.game.move('left')
+                this.update()
                 break;
             case 'ArrowRight':
                 this.game.move('right')
+                this.update()
                 break;
         }
     })
