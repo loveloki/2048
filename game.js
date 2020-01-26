@@ -12,32 +12,48 @@ const Game = {
     document.addEventListener("keydown", event => {
         switch (event.key) {
             case 'ArrowDown':
-                this.game.move('down')
-                this.update()
+                this.update('down')
                 break;
             case 'ArrowUp':
-                this.game.move('up')
-                this.update()
+                this.update('up')
                 break;
             case 'ArrowLeft':
-                this.game.move('left')
-                this.update()
+                this.update('left')
                 break;
             case 'ArrowRight':
-                this.game.move('right')
-                this.update()
+                this.update('right')
                 break;
         }
     })
   },
-  update: function () {
+  update: function (direction) {
+    const isGameOver = this.game.isGameOver()
+		if (isGameOver) {
+      //显示游戏结束画面
+			return false
+		}
+
+    const isCanMove = this.game.isCanMove(direction)
+    //如果不能移动
+    if (!isCanMove) {
+      return
+    }
+
+    this.game.move(direction)
+
+    //对nextTile添加相应的className
+    this.game.updateNextTile()
+    this.game.drawChessboard()
+
+    // console.log(...this.game.nextTile);
 
   },
   isOver: function () {
 
   },
   start: function () {
-    this.game.start()
+    this.game.init()
+    this.game.drawChessboard()
   },
   restart: function () {
     this.game.restart()

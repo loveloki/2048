@@ -28,38 +28,19 @@ var _2048 = {
 	nextTile: [],
 	mergedTile: [],
 	move: function (direction) {
-		//判断是否所有方向无法移动: 游戏结束
-		const flag = this.isGameOver()
-		if (flag) {
-			//显示游戏结束画面
-			return
-		}
-		//判断当前方向是否可以移动
-		const go = this.isCanMove(direction)
-		//进行一次移动，都移到一边，便于合并操作，然后合并，再移动一次生成最终位置
-		if (go) {
-			//每次移动要更新tile的position
-			//prevPosition存储最初的position
-			//position每次移动都需要改变， -> 和实际界面对应，避免不知道的bug出现
+		//每次移动要更新tile的position
+		//prevPosition存储最初的position
+		//position每次移动都需要改变， -> 和实际界面对应，避免不知道的bug出现
 
+		//移动一次
+		this.moveTo(direction)
+		//合并
+		this.merge(direction)
+		//最后移动
+		this.moveTo(direction)
 
-			//移动一次
-			this.moveTo(direction)
-			//合并
-			this.merge(direction)
-			//最后移动
-			this.moveTo(direction)
+		//执行tile移动动画
 
-			//执行tile移动动画
-
-			//生成下一个（新的）tile
-			const [x, y, level] = this.createNextTile()
-			//设置nextTile相关属性
-			this.nextTile.push([x, y])
-			this.chessboard[x][y].setLevel(level)
-			//更新界面
-			this.update()
-		}
 	},
 	moveTo: function (direction) {
 		const len = this.gridLength
@@ -331,7 +312,7 @@ var _2048 = {
 		}
 
 		//执行更新
-		this.update()
+		// this.update()
 	},
 	restart: function () {
 		//将html所有的className重置为初始值
@@ -358,11 +339,18 @@ var _2048 = {
 
 		requestAnimationFrame(() => {
 			requestAnimationFrame(() => {
-				this.update()
+				// this.update()
 			})
 		})
 	},
 	updateNextTile: function () {
+		this.nextTile = []
+
+		//生成下一个（新的）tile
+		const [x, y, level] = this.createNextTile()
+		//设置nextTile相关属性
+		this.nextTile.push([x, y])
+		this.chessboard[x][y].setLevel(level)
 		this.nextTile.map(([x, y]) => {
 			cells[x * 4 + y].querySelector('span').classList.add('new-tile')
 		})
