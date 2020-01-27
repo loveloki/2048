@@ -112,7 +112,7 @@ var _2048 = {
 			}
 		}
 
-		//更新新的（移动后的）位置信息
+		//更新新的（移动后的）位置信息，并且去除className
 		for (let i = 0; i < len; i++) {
 			for (let j = 0; j < len; j++) {
 				const tile = this.chessboard[i][j]
@@ -120,6 +120,9 @@ var _2048 = {
 					let [x, y] = tile.position
 					tile.setStartPosition([x, y])
 					tile.setEndPosition([i, j])
+					//去掉className
+					cells[x*4 + y].querySelector('span').classList.remove('tile-' + this.chessboard[i][j].level)
+
 				}
 				tile.setPosition([i, j])
 			}
@@ -138,6 +141,7 @@ var _2048 = {
 						this.chessboard[i][j].setLevel(tile.level + 1)
 						cells[i * 4 + j].querySelector('span').classList.add('merge')
 						this.mergedTile.push([i, j])
+						cells[i * 4 + (j + 1)].querySelector('span').classList.remove('tile-' + this.chessboard[i][j + 1].level, 'merge')
 						this.chessboard[i][j + 1].setLevel(0)
 						//更新level被设置为0的tile的动画终点
 						this.chessboard[i][j + 1].setEndPosition(this.chessboard[i][j].endPosition)
@@ -155,6 +159,7 @@ var _2048 = {
 						this.chessboard[i][pos - j].setLevel(tile.level + 1)
 						cells[i * 4 + pos - j].querySelector('span').classList.add('merge')
 						this.mergedTile.push([i, pos - j])
+						cells[i * 4 + (pos - j - 1)].querySelector('span').classList.remove('tile-' + this.chessboard[i][pos - j - 1].level, 'merge')
 						this.chessboard[i][pos - j - 1].setLevel(0)
 						//更新level被设置为0的tile的动画终点
 						this.chessboard[i][pos - j - 1].setEndPosition(this.chessboard[i][pos - j].endPosition)
@@ -171,6 +176,7 @@ var _2048 = {
 						this.chessboard[i][j].setLevel(tile.level + 1)
 						cells[i * 4 + j].querySelector('span').classList.add('merge')
 						this.mergedTile.push([i, j])
+						cells[(i + 1) * 4 + j].querySelector('span').classList.remove('tile-' + this.chessboard[i + 1][j].level, 'merge')
 						this.chessboard[i + 1][j].setLevel(0)
 						//更新level被设置为0的tile的动画终点
 						this.chessboard[i + 1][j].setEndPosition(this.chessboard[i][j].endPosition)
@@ -188,6 +194,7 @@ var _2048 = {
 						this.chessboard[pos - i][j].setLevel(tile.level + 1)
 						cells[(pos - i) * 4 + j].querySelector('span').classList.add('merge')
 						this.mergedTile.push([pos - i, j])
+						cells[(pos - i - 1) * 4 + j].querySelector('span').classList.remove('tile-' + this.chessboard[pos - i - 1][j].level, 'merge')
 						this.chessboard[pos - i - 1][j].setLevel(0)
 						//更新level被设置为0的tile的动画终点
 						this.chessboard[pos - i - 1][j].setEndPosition(this.chessboard[pos - i][j].endPosition)
