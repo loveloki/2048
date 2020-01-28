@@ -447,10 +447,8 @@ var _2048 = {
 
 		//获取nextTile信息
 		for (let i = 0; i < 2; i++) {
-			const [x, y, level] = this.createNextTile()
-			//设置nextTile相关属性
-			this.nextTile.push([x, y])
-			this.chessboard[x][y].setLevel(level)
+			this.nextTile = this.createNextTile()
+			this.setNewTile()
 		}
 	},
 	setNewTile: function () {
