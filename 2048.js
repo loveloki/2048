@@ -459,7 +459,28 @@ var _2048 = {
 
 		newTile.isNew = true
 		newTile.setLevel(level)
-	}
+	},
+	getClassNameList: function (positionX, positionY) {
+		const tile = this.chessboard[positionX][positionY]
+
+		const list = ['tile']
+
+		const level = tile.level
+		const isMerged = tile.isMerged
+		const isNew = tile.isNew
+
+		if (level !== 0) {
+			list.push('tile-' + level)
+		}
+		if (isMerged) {
+			list.push('merge')
+		}
+		if (isNew) {
+			list.push('new-tile')
+		}
+
+		return list
+	},
 }
 
 export default _2048
