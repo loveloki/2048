@@ -452,6 +452,15 @@ var _2048 = {
 			this.nextTile.push([x, y])
 			this.chessboard[x][y].setLevel(level)
 		}
+	},
+	setNewTile: function () {
+		const {position, level} = this.nextTile
+		const [x, y] = position
+
+		const newTile = this.chessboard[x][y]
+
+		newTile.isNew = true
+		newTile.setLevel(level)
 	}
 }
 
