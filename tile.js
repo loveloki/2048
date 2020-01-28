@@ -1,6 +1,8 @@
 var tile = {
     level: 0,
     position: [0, 0],
+    isNew: false,
+    isMerged: false,
     startPosition: null,
     endPosition: null,
     create: function (level, position) {
