@@ -416,13 +416,13 @@ var _2048 = {
 				const tileLevel = this.chessboard[i][j].level
 				const tileSpan = cells[i * 4 + j].querySelector('span')
 
-				if (tileLevel != 0) {
-					this.changeSpanText(tileLevel, i, j)
-					this.changeClassList('add', tileLevel, i, j)
-				} else {
-					tileSpan.className = 'tile'
-					this.changeSpanText(0, i, j)
-				}
+				//设置tile的className
+				tileSpan.className = ''
+				const classNameList = this.getClassNameList(i, j)
+				classNameList.forEach(className => tileSpan.classList.add(className))
+
+				//设置tile文字
+				this.changeSpanText(tileLevel, i, j)
 			}
 		}
 	},
