@@ -120,9 +120,6 @@ var _2048 = {
 					let [x, y] = tile.position
 					tile.setStartPosition([x, y])
 					tile.setEndPosition([i, j])
-					//去掉className
-					cells[x*4 + y].querySelector('span').classList.remove('tile-' + this.chessboard[i][j].level)
-
 				}
 				tile.setPosition([i, j])
 			}
