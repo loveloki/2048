@@ -25,7 +25,7 @@ var _2048 = {
 	chessboard: [],
 	gridLength: 4,
 	prevTile: [],
-	nextTile: [],
+	nextTile: {},
 	mergedTile: [],
 	move: function (direction) {
 		//每次移动要更新tile的position
