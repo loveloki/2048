@@ -348,16 +348,13 @@ var _2048 = {
 		})
 	},
 	updateNextTile: function () {
-		this.nextTile = []
+		//改变prevTile的isNew属性：上一轮的newTile
+		this.prevTile.forEach(oldTile => oldTile.isNew = false)
 
 		//生成下一个（新的）tile
-		const [x, y, level] = this.createNextTile()
 		//设置nextTile相关属性
-		this.nextTile.push([x, y])
-		this.chessboard[x][y].setLevel(level)
-		this.nextTile.map(([x, y]) => {
-			cells[x * 4 + y].querySelector('span').classList.add('new-tile')
-		})
+		this.nextTile = this.createNextTile()
+		this.setNewTile()
 	},
 	createNextTile: function () {
 		var x, y
