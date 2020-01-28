@@ -459,6 +459,9 @@ var _2048 = {
 
 		newTile.isNew = true
 		newTile.setLevel(level)
+
+		//往prevTile里面push tile对象
+		this.prevTile.push(newTile)
 	},
 	getClassNameList: function (positionX, positionY) {
 		const tile = this.chessboard[positionX][positionY]
