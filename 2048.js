@@ -112,7 +112,7 @@ var _2048 = {
 			}
 		}
 
-		//更新新的（移动后的）位置信息，并且去除className
+		//更新新的（移动后的）位置信息
 		for (let i = 0; i < len; i++) {
 			for (let j = 0; j < len; j++) {
 				const tile = this.chessboard[i][j]
