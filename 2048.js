@@ -369,7 +369,7 @@ var _2048 = {
 		} while (this.chessboard[x][y].level != 0)
 		var level = getRandomNumber(4) > 2 ? 2 : 1
 
-		return [x, y, level]
+		return {position: [x, y], level}
 	},
 	isGameOver: function () {
 		for (let i = 0; i < this.gridLength; i++) {
