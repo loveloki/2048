@@ -267,35 +267,6 @@ var _2048 = {
 
 		return false
 	},
-	update: function () {
-		//对nextTile添加相应的className
-		this.updateNextTile()
-		//绘制chessboard
-		this.drawChessboard()
-
-		//更新prevTile的nextTile值
-		this.prevTile = this.nextTile
-		this.nextTile = []
-		//去掉多余的className
-		const prevs = this.prevTile
-		prevs.map(([x, y]) => {
-			const level = this.chessboard[x][y].level
-			if (level != 0) {
-				//cells[x*4 + y].querySelector('span').classList.remove('new-tile')
-			}
-		})
-
-		this.mergedTile.map(([x, y]) => {
-			const level = this.chessboard[x][y].level
-
-			cells[x * 4 + y].querySelector('span').classList.remove('merge')
-
-			cells[x * 4 + y].querySelector('span').classList.remove('tile-' + (level - 1))
-		})
-
-
-		// this.tool.showTilesList.bind(this)()
-	},
 	start: function () {
 		//初始化tile
 		for (let i = 0; i < this.gridLength; i++) {
@@ -314,9 +285,6 @@ var _2048 = {
 			this.nextTile.push([x, y])
 			this.chessboard[x][y].setLevel(level)
 		}
-
-		//执行更新
-		// this.update()
 	},
 	restart: function () {
 		//将html所有的className重置为初始值
@@ -340,12 +308,6 @@ var _2048 = {
 			this.nextTile.push([x, y])
 			this.chessboard[x][y].setLevel(level)
 		}
-
-		requestAnimationFrame(() => {
-			requestAnimationFrame(() => {
-				// this.update()
-			})
-		})
 	},
 	updateNextTile: function () {
 		//改变prevTile的isNew属性：上一轮的newTile
