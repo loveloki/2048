@@ -421,6 +421,19 @@ var _2048 = {
 
 		return list
 	},
+	isWin: function () {
+		for (let i = 0; i < this.gridLength; i++) {
+			for (let j = 0; j < this.gridLength; j++) {
+				let tile = this.chessboard[i][j]
+
+				if (tile.level == 11) {
+					return true
+				}
+			}
+		}
+
+		return false
+	},
 }
 
 export default _2048
