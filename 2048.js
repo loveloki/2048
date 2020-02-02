@@ -267,25 +267,6 @@ var _2048 = {
 
 		return false
 	},
-	start: function () {
-		//初始化tile
-		for (let i = 0; i < this.gridLength; i++) {
-			let line = []
-			for (let j = 0; j < this.gridLength; j++) {
-				let t = tile.create(0, [i, j])
-				line.push(t)
-			}
-			this.chessboard.push(line)
-		}
-
-		//获取nextTile信息
-		for (let i = 0; i < 2; i++) {
-			const [x, y, level] = this.createNextTile()
-			//设置nextTile相关属性
-			this.nextTile.push([x, y])
-			this.chessboard[x][y].setLevel(level)
-		}
-	},
 	restart: function () {
 		//将html所有的className重置为初始值
 		for (let i = 0; i < this.gridLength; i++) {
