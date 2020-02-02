@@ -8,6 +8,9 @@ const Game = {
     document.querySelector('.new-game').addEventListener('click', event => {
       this.restart()
     })
+    document.querySelector('.try-again').addEventListener('click', event => {
+      this.restart()
+    })
 
     document.addEventListener("keydown", event => {
         switch (event.key) {
@@ -30,6 +33,7 @@ const Game = {
     const isGameOver = this.game.isGameOver()
 		if (isGameOver) {
       //显示游戏结束画面
+      this.showGameOver()
 			return false
 		}
 
@@ -48,15 +52,18 @@ const Game = {
     // console.log(...this.game.nextTile);
 
   },
-  isOver: function () {
-
+  showGameOver: function () {
+    document.querySelector('.game-message').classList.add('game-over')
   },
   start: function () {
     this.game.init()
     this.game.drawChessboard()
   },
   restart: function () {
+    document.querySelector('.game-message').classList.remove('game-over')
+
     this.game.restart()
+    this.game.drawChessboard()
   },
 }
 
