@@ -49,18 +49,27 @@ const Game = {
     this.game.updateNextTile()
     this.game.drawChessboard()
 
-    // console.log(...this.game.nextTile);
-
+    //检测是否合成2048
+    const isWin = this.game.isWin()
+    if(isWin) {
+      this.showWin()
+    }
   },
   showGameOver: function () {
     document.querySelector('.game-message').classList.add('game-over')
+  },
+  showWin: function () {
+    document.querySelector('.game-message').classList.add('game-win')
+
+    document.querySelector('.game-message').querySelector('p').innerText = '恭喜获胜'
+    document.querySelector('.game-message').querySelector('a').innerText = '再来一局'
   },
   start: function () {
     this.game.init()
     this.game.drawChessboard()
   },
   restart: function () {
-    document.querySelector('.game-message').classList.remove('game-over')
+    document.querySelector('.game-message').className = 'game-message'
 
     this.game.restart()
     this.game.drawChessboard()

@@ -52,6 +52,10 @@ body {
     display: block;
 }
 
+.game-win {
+    display: block;
+}
+
 .cell {
     display: flex;
     align-items: center;
