@@ -14,7 +14,7 @@ const Tool = {
     }
     console.table(showList)
   },
-  changeTilesList: function (_2048, positionX, positionY, level) {
+  changeTileLevel: function (_2048, positionX, positionY, level) {
     _2048.chessboard[positionX][positionY].level = level
   }
 }
