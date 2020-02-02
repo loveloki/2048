@@ -6,6 +6,7 @@ body {
 
 ._2048 {
     display: grid;
+    position: relative;
     width: 500px;
     height: 500px;
     grid-template-rows: 100px 100px 100px 100px;
@@ -15,6 +16,40 @@ body {
     align-content: center;
     background: #bbada0;
     border-radius: 5px;
+}
+
+.game-message {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    background: rgba(238, 228, 218, 0.73);
+}
+
+.game-message p {
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 60px;
+    margin-top: 222px;
+}
+
+.try-again {
+    background: #8f7a66;
+    border-radius: 3px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #f9f6f2;
+    height: 40px;
+    line-height: 42px;
+    cursor: pointer;
+    display: block;
+}
+
+.game-over {
+    display: block;
 }
 
 .cell {
