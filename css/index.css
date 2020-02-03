@@ -20,6 +20,7 @@ body {
 
 header {
     display: grid;
+    align-items: start;
     grid-template-columns: repeat(2, 1fr);
 }
 
@@ -35,20 +36,33 @@ header {
 }
 
 .score-current, .score-best {
-    height: 80px;
-    padding: 0 10px;
+    position: relative;
+    height: 25px;
+    font-size: 25px;
+    padding: 15px 25px;
     margin: 0 5px;
     text-align: center;
     background: #bbada0;
     border-radius: 5px;
 }
 
-.score-current::after {
+
+.score-current::after, .score-best::after {
+    position: absolute;
+    width: 100%;
     content: 'SCORE';
+    left: 0;
+    top: 0;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.score-current::after {
+    content: 'score';
 }
 
 .score-best::after {
-    content: 'BEST SCORE';
+    content: 'best';
 }
 
 .new-game {
