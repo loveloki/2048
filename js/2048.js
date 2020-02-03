@@ -273,6 +273,11 @@ var _2048 = {
 		//将_2048重置为初始值
 		this.prevTile = []
 
+    //清空score
+    this.score = 0
+    this.mergedTile = []
+    this.changeScore()
+
 		//获取nextTile信息
 		for (let i = 0; i < 2; i++) {
 			this.nextTile = this.createNextTile()
@@ -435,11 +440,12 @@ var _2048 = {
 
 		//显示分数
 		document.querySelector('.score-current').innerText = this.score
-		document.querySelector('.score-best').innerText = this.score
 
-		if (this.score >= this.bestScore) {
-			document.querySelector('.score-best').innerText = this.score
+		if (this.score > this.bestScore) {
+			this.bestScore = this.score
 		}
+		//显示最高分数
+		document.querySelector('.score-best').innerText = this.bestScore
 	},
 }
 
