@@ -7,6 +7,7 @@ function getRandomNumber(max) {
 const cells = document.querySelectorAll('.cell')
 
 var _2048 = {
+	score: 0,
 	chessboard: [],
 	gridLength: 4,
 	prevTile: [],
@@ -16,6 +17,9 @@ var _2048 = {
 		//每次移动要更新tile的position
 		//prevPosition存储最初的position
 		//position每次移动都需要改变， -> 和实际界面对应，避免不知道的bug出现
+
+		//移动前将mergedTile重置为空
+		this.mergedTile = []
 
 		//移动一次
 		this.moveTo(direction)
