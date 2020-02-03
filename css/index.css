@@ -18,6 +18,45 @@ body {
     border-radius: 5px;
 }
 
+header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.new-game {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* #region  显示分数 */
+
+.scores {
+    display: flex;
+}
+
+.score-current, .score-best {
+    height: 80px;
+    padding: 0 10px;
+    margin: 0 5px;
+    text-align: center;
+    background: #bbada0;
+    border-radius: 5px;
+}
+
+.score-current::after {
+    content: 'SCORE';
+}
+
+.score-best::after {
+    content: 'BEST SCORE';
+}
+
+.new-game {
+    width: 4em;
+}
+/* #endregion */
+
+/* #region  游戏结束提示信息 */
 .game-message {
     display: none;
     position: absolute;
@@ -42,7 +81,6 @@ body {
     padding: 0 20px;
     text-decoration: none;
     color: #f9f6f2;
-    height: 40px;
     line-height: 42px;
     cursor: pointer;
     display: block;
@@ -55,6 +93,9 @@ body {
 .game-win {
     display: block;
 }
+/* #endregion */
+
+/* #region  tile */
 
 .cell {
     display: flex;
@@ -142,7 +183,9 @@ body {
     font-size: 35px;
 }
 
+/* #endregion */
 
+/* #region  动画 */
 
 .new-tile {
     animation: appear 200ms ease 100ms;
@@ -334,4 +377,17 @@ body {
     to {
         transform: translateY(360px);
     }
+}
+
+/* #endregion */
+
+.btn {
+    background: #8f7a66;
+    border-radius: 3px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #f9f6f2;
+    line-height: 42px;
+    cursor: pointer;
+    display: block;
 }
