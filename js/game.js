@@ -67,6 +67,7 @@ const Game = {
   start: function () {
     this.game.init()
     this.game.drawChessboard()
+    this.game.changeScore()
   },
   restart: function () {
     document.querySelector('.game-message').className = 'game-message'

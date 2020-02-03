@@ -8,6 +8,7 @@ const cells = document.querySelectorAll('.cell')
 
 var _2048 = {
 	score: 0,
+	bestScore: 0,
 	chessboard: [],
 	gridLength: 4,
 	prevTile: [],
@@ -25,6 +26,8 @@ var _2048 = {
 		this.moveTo(direction)
 		//合并
 		this.merge(direction)
+		//改变分数
+		this.changeScore()
 		//最后移动
 		this.moveTo(direction)
 
@@ -419,6 +422,24 @@ var _2048 = {
 		}
 
 		return false
+	},
+	changeScore: function () {
+		//获得增加的分数
+		let addScore = 0
+		this.mergedTile.forEach(([positionX, positionY]) => {
+			addScore += 2 ** this.chessboard[positionX][positionY].level
+		})
+
+		//更新分数
+		this.score += addScore
+
+		//显示分数
+		document.querySelector('.score-current').innerText = this.score
+		document.querySelector('.score-best').innerText = this.score
+
+		if (this.score >= this.bestScore) {
+			document.querySelector('.score-best').innerText = this.score
+		}
 	},
 }
 
