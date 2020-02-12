@@ -33,6 +33,11 @@ var _2048 = {
 
 		//执行tile移动动画
 
+		//存储数据
+		localStorage.setItem('score', JSON.stringify(this.score))
+		localStorage.setItem('bestScore', JSON.stringify(this.bestScore))
+
+		localStorage.setItem('chessboard', JSON.stringify(this.chessboard))
 	},
 	moveTo: function (direction) {
 		const len = this.gridLength
@@ -364,22 +369,33 @@ var _2048 = {
 		span.textContent = value
 	},
 	init: function () {
-		//暂时不做存档：从localStorage读取数据
-
-		//初始化tile
-		for (let i = 0; i < this.gridLength; i++) {
-			let line = []
-			for (let j = 0; j < this.gridLength; j++) {
-				let t = tile.create(0, [i, j])
-				line.push(t)
-			}
-			this.chessboard.push(line)
+		//读取存档
+		if(localStorage.getItem('bestScore')) {
+			this.bestScore = JSON.parse(localStorage.getItem('bestScore'))
 		}
+		if(localStorage.getItem('score')) {
+			this.score = JSON.parse(localStorage.getItem('score'))
+		}
+		if (localStorage.getItem('chessboard')) {
+			let ChessboardObject = JSON.parse(localStorage.getItem('chessboard'))
 
-		//获取nextTile信息
-		for (let i = 0; i < 2; i++) {
-			this.nextTile = this.createNextTile()
-			this.setNewTile()
+			this.chessboard = ChessboardObject.map(line => line.map(tileObject => tile.createFromObject(tileObject)))
+		} else {
+			//初始化tile
+			for (let i = 0; i < this.gridLength; i++) {
+				let line = []
+				for (let j = 0; j < this.gridLength; j++) {
+					let t = tile.create(0, [i, j])
+					line.push(t)
+				}
+				this.chessboard.push(line)
+			}
+
+			//获取nextTile信息
+			for (let i = 0; i < 2; i++) {
+				this.nextTile = this.createNextTile()
+				this.setNewTile()
+			}
 		}
 	},
 	setNewTile: function () {
