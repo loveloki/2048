@@ -265,6 +265,10 @@ var _2048 = {
 		return false
 	},
 	restart: function () {
+		//清除存储的数据
+		localStorage.removeItem('score')
+		localStorage.removeItem('chessboard')
+
 		//将html所有的className重置为初始值
 		for (let i = 0; i < this.gridLength; i++) {
 			for (let j = 0; j < this.gridLength; j++) {
@@ -272,8 +276,17 @@ var _2048 = {
 				tileSpan.className = 'tile'
 			}
 		}
-		//将所有chessboard元素填充为0
-		this.chessboard.map(tiles => tiles.map(tile => tile.setLevel(0)))
+		
+		//重新生成chessboard
+		this.chessboard = []
+		for (let i = 0; i < this.gridLength; i++) {
+			let line = []
+			for (let j = 0; j < this.gridLength; j++) {
+				let t = tile.create(0, [i, j])
+				line.push(t)
+			}
+			this.chessboard.push(line)
+		}
 
 		//将_2048重置为初始值
 		this.prevTile = []
