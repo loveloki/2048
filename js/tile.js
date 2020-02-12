@@ -27,6 +27,15 @@ var tile = {
     setEndPosition: function (position) {
         this.endPosition = position
     },
+    createFromObject: function (tileObject) {
+        let t = Object.create(tile)
+
+        t.level = tileObject.level
+        t.position = tileObject.position
+        t.isNew = tileObject.isNew
+
+        return t
+    }
 }
 
 export default tile
