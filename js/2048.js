@@ -269,14 +269,6 @@ var _2048 = {
 		localStorage.removeItem('score')
 		localStorage.removeItem('chessboard')
 
-		//将html所有的className重置为初始值
-		for (let i = 0; i < this.gridLength; i++) {
-			for (let j = 0; j < this.gridLength; j++) {
-				const tileSpan = cells[i * 4 + j].querySelector('span')
-				tileSpan.className = 'tile'
-			}
-		}
-		
 		//重新生成chessboard
 		this.chessboard = []
 		for (let i = 0; i < this.gridLength; i++) {
