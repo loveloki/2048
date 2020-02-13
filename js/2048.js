@@ -32,9 +32,6 @@ var _2048 = {
 		this.moveTo(direction)
 
 		//执行tile移动动画
-
-		//存储数据
-		this.save()
 	},
 	moveTo: function (direction) {
 		const len = this.gridLength

@@ -49,6 +49,8 @@ const Game = {
     this.game.updateNextTile()
     this.game.drawChessboard()
 
+    this.game.save()
+
     //检测是否合成2048
     const isWin = this.game.isWin()
     if(isWin) {
