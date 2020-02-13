@@ -34,10 +34,7 @@ var _2048 = {
 		//执行tile移动动画
 
 		//存储数据
-		localStorage.setItem('score', JSON.stringify(this.score))
-		localStorage.setItem('bestScore', JSON.stringify(this.bestScore))
-
-		localStorage.setItem('chessboard', JSON.stringify(this.chessboard))
+		this.save()
 	},
 	moveTo: function (direction) {
 		const len = this.gridLength
@@ -468,6 +465,12 @@ var _2048 = {
 		//显示最高分数
 		document.querySelector('.score-best').innerText = this.bestScore
 	},
+	save: function () {
+		localStorage.setItem('score', JSON.stringify(this.score))
+		localStorage.setItem('bestScore', JSON.stringify(this.bestScore))
+
+		localStorage.setItem('chessboard', JSON.stringify(this.chessboard))
+	}
 }
 
 export default _2048
